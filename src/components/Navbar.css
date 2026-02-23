@@ -1,0 +1,27 @@
+/* Estilos básicos para el Navbar */
+.navbar {
+  background-color: #333;
+  padding: 1rem;
+}
+
+.navbar-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-list li {
+  margin: 0 1rem;
+}
+
+.navbar-list a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar-list a:hover {
+  text-decoration: underline;
+}
