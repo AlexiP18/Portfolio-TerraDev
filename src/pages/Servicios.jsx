@@ -9,7 +9,7 @@ function Servicios() {
       <p>
         Diseñamos squads que entran y salen según la necesidad: arquitectura de APIs, interfaces en React/Next y pipelines DevOps listos para producción.
       </p>
-      <div className="grid two service-grid">
+      <div className="services-stack">
         <div>
           <h3>Backend Engineering</h3>
           <p>Node.js, NestJS, Express, microservicios y bases de datos relacionales/noSQL con monitoreo integrado.</p>
