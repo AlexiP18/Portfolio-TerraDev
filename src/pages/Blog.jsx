@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Blog() {
   return (
@@ -8,25 +9,25 @@ function Blog() {
       <h1>Ideas frescas sobre producto, diseño y tecnología aplicada</h1>
       <div className="grid" style={{marginTop: '2rem'}}>
         <article className="case-card">
-          <h3>Playbooks de descubrimiento: cómo alineamos negocio, UX y data en 10 días</h3>
+          <h3>IA en cadenas de producto</h3>
           <p>
-            Deconstruimos nuestro formato de workshop híbrido: plantillas, decisiones clave y cómo llegamos a un backlog priorizado listo para sprints.
+            Cómo integramos modelos generativos y asistentes autónomos en research, content ops y soporte a clientes sin romper compliance.
           </p>
-          <button className="ghost-btn">Leer síntesis</button>
+          <Link className="ghost-btn" to="/blog/ia">Leer caso IA</Link>
         </article>
         <article className="case-card">
-          <h3>Motion systems para productos serios: principios y librerías</h3>
+          <h3>Herramientas CASE para equipos híbridos</h3>
           <p>
-            Motion no es decoración. Explicamos cómo definimos tokens, duraciones y microinteracciones para interfaces financieras y B2B.
+            Evaluamos CASE low-code/no-code y entornos visuales para acelerar handoffs entre diseño, producto y devs.
           </p>
-          <button className="ghost-btn">Ver framework</button>
+          <Link className="ghost-btn" to="/blog/case">Entrar al análisis</Link>
         </article>
         <article className="case-card">
-          <h3>Escalando Frontend con equipos distribuidos</h3>
+          <h3>Playbook Cloud Native</h3>
           <p>
-            Tooling, convenciones y automatizaciones que mantenemos en proyectos multi-squad con React, Turborepo y contratos claros.
+            Observabilidad, escalado automático y gobernanza multi-cloud para plataformas con releases semanales.
           </p>
-          <button className="ghost-btn">Explorar guía</button>
+          <Link className="ghost-btn" to="/blog/cloud">Ver playbook cloud</Link>
         </article>
       </div>
     </div>

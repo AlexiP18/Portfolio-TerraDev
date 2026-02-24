@@ -6,6 +6,9 @@ import Proyectos from './pages/Proyectos.jsx';
 import Equipo from './pages/Equipo.jsx';
 import Contacto from './pages/Contacto.jsx';
 import Blog from './pages/Blog.jsx';
+import BlogIa from './pages/blog/BlogIa.jsx';
+import BlogCase from './pages/blog/BlogCase.jsx';
+import BlogCloud from './pages/blog/BlogCloud.jsx';
 import Navbar from './components/Navbar.jsx';
 import './App.css';
 
@@ -49,6 +52,9 @@ function App() {
             <Route path="/equipo" element={<Equipo />} />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/ia" element={<BlogIa />} />
+            <Route path="/blog/case" element={<BlogCase />} />
+            <Route path="/blog/cloud" element={<BlogCloud />} />
           </Routes>
         </div>
       </main>
