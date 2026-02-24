@@ -11,10 +11,6 @@ function Inicio() {
           <p>
             Acompañamos a equipos de producto desde la definición estratégica hasta la entrega en producción. Combinamos investigación, diseño de sistemas y código limpio para mantener coherencia en cada release.
           </p>
-          <div className="cta-row">
-            <button>Agenda una sesión</button>
-            <button className="ghost-btn">Ver procesos</button>
-          </div>
           <ul className="hero-meta">
             <li>
               <span>Focus</span>

@@ -7,7 +7,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-inner">
         <Link to="/" className="navbar-brand">
-          <span>OpenCode</span>
+          <span>DevTeam</span>
           <small>Estudio Digital</small>
         </Link>
         <ul className="navbar-list">
