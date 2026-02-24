@@ -1,54 +1,168 @@
+
 /* Updated global styles for modern design */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
 :root {
-  font-family: 'Roboto', sans-serif;
+  --bg: #0f0f10;
+  --bg-card: #181a1c;
+  --stroke: rgba(75, 78, 86, 0.8);
+  --text-primary: #F4F4F7;
+  --text-secondary: rgba(214, 215, 221, 0.8);
+  --accent: #9FE7C7;
+  --accent-2: #7AC7B1;
+  --accent-dark: #4FA08F;
+  --muted: rgba(159, 231, 199, 0.18);
+}
+
+:root {
+  font-family: 'Space Grotesk', 'Inter', 'Roboto', sans-serif;
   line-height: 1.6;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: #f5f5f5;
-  background: linear-gradient(to right, #1e3c72, #2a5298);
-
+  color-scheme: dark;
+  color: #D6D7DD;
+  background: #0f0f10;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #4caf50;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-a:hover {
-  color: #81c784;
-}
-
 body {
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 320px;
   min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(28, 42, 38, 0.4), transparent 55%),
+              linear-gradient(135deg, #09090a 0%, #151517 60%, #101112 100%);
+  color: #D6D7DD;
 }
 
-h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+.page-frame {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.main-container {
+  margin: 2.2rem auto 2.8rem;
+  padding: 3.5rem clamp(1.8rem, 4vw, 4rem);
+  background: #181a1c;
+  border-radius: 30px;
+  border: 1px solid rgba(75, 78, 86, 0.8);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  min-height: 70vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.main-container::after,
+.main-container::before {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  pointer-events: none;
+}
+
+.main-container::before {
+  inset: auto 8% -15% 8%;
+  border: none;
+  height: 220px;
+  background: radial-gradient(circle, rgba(178, 255, 96, 0.12), transparent 70%);
+  filter: blur(90px);
+}
+
+@media (max-width: 920px) {
+  .main-container {
+    margin: 1.7rem auto;
+    padding: 3rem 1.5rem;
+    border-radius: 24px;
+  }
+}
+
+@media (max-width: 540px) {
+  .main-container {
+    margin: 1.2rem auto;
+    padding: 2.5rem 1.1rem;
+  }
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+h1, h2, h3, h4 {
+  color: #FCFCFC;
+  margin: 0 0 0.8rem;
+}
+
+p {
+  margin: 0 0 1rem;
+  color: rgba(214, 215, 221, 0.85);
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.5rem 1rem;
-  background: #4caf50;
-  color: white;
+  border-radius: 999px;
+  border: none;
+  padding: 0.85rem 1.6rem;
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
+  color: #061208;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  box-shadow: 0 15px 30px rgba(73, 221, 122, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 button:hover {
-  background: #388e3c;
+  transform: translateY(-3px);
+  box-shadow: 0 18px 38px rgba(79, 160, 143, 0.35);
+}
+
+button + button,
+button + .ghost-btn,
+button + .ghost-link,
+.ghost-btn + button,
+.ghost-btn + .ghost-btn,
+.ghost-btn + .ghost-link,
+.ghost-link + button,
+.ghost-link + .ghost-btn,
+.ghost-link + .ghost-link {
+  margin-left: clamp(0.85rem, 2vw, 1.4rem);
+}
+
+.spark {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x, 30%) var(--y, 30%), var(--muted), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.card:hover .spark {
+  opacity: 1;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(159, 231, 199, 0.4);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+.inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.inline-actions > * + * {
+  margin-left: 0;
 }
