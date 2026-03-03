@@ -37,7 +37,7 @@ function BlogIa() {
 
       <section className="hero-metrics" style={{ marginTop: '1.5rem' }}>
         <h2>3 pilares técnicos</h2>
-        <div className="grid two" style={{ marginTop: '1rem' }}>
+        <div className="custom-grid two" style={{ marginTop: '1rem' }}>
           {pillars.map((section) => (
             <article className="case-card" key={section.title}>
               <h3>{section.title}</h3>

@@ -6,7 +6,7 @@ function Proyectos() {
       <div className="spark" />
       <div className="pill">Casos recientes</div>
       <h1>Construimos ecosistemas digitales para challengers y líderes globales</h1>
-      <div className="grid" style={{marginTop: '2rem'}}>
+      <div className="custom-grid" style={{marginTop: '2rem'}}>
         {[
           {
             badge: 'Product · Retail',

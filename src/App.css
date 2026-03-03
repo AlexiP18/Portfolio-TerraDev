@@ -45,12 +45,13 @@
   padding-left: 1.2rem;
 }
 
-.grid {
+/* Renombrado de .grid → .custom-grid para evitar colisión con Tailwind .grid utility */
+.custom-grid {
   display: grid;
   gap: 1.5rem;
 }
 
-.grid.two {
+.custom-grid.two {
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 }
 

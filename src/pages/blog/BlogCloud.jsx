@@ -35,7 +35,7 @@ function BlogCloud() {
 
       <section style={{ marginTop: '2rem' }}>
         <h2>Prácticas esenciales</h2>
-        <div className="grid two" style={{ marginTop: '1rem' }}>
+        <div className="custom-grid two" style={{ marginTop: '1rem' }}>
           {practices.map((item) => (
             <article className="case-card" key={item.label}>
               <h3>{item.label}</h3>

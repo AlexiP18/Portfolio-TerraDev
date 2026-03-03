@@ -3,12 +3,13 @@ import React from 'react';
 function Equipo() {
   const team = [
     {
-      name: 'Guachi Alex',
+      name: 'Alex Guachi',
       title: 'Tech Lead · Backend',
       specialty: 'Node.js · Go · Event-driven',
       focus: 'Arquitecturas resilientes, APIs de alto tráfico y sistemas distribuidos.',
       github: 'https://github.com/A1EXF6A',
-      initials: 'GA'
+      initials: 'AG',
+      photo: '/team/alex_guachi.jpg',
     },
     {
       name: 'Heidi Villavicencio',
@@ -16,7 +17,8 @@ function Equipo() {
       specialty: 'React · Next.js · TypeScript',
       focus: 'Design systems accesibles, motion y performance en interfaces complejas.',
       github: 'https://github.com/HeidiVM',
-      initials: 'HV'
+      initials: 'HV',
+      photo: '/team/heidi_villavicencio.jpg',
     },
     {
       name: 'Michelle Tunja',
@@ -24,15 +26,17 @@ function Equipo() {
       specialty: 'DesignOps · CSS · WebGL',
       focus: 'Narrativas visuales, prototipos de alta fidelidad y microinteracciones.',
       github: 'https://github.com/Ale-2906',
-      initials: 'MT'
+      initials: 'MT',
+      photo: '/team/michelle_tunja.jpg',
     },
     {
-      name: 'Alexander Luisa',
+      name: 'Daniel Calapiña',
       title: 'Platform Engineer',
       specialty: 'Python · Rust · DevOps',
       focus: 'Automatización CI/CD, observabilidad y seguridad en la nube.',
       github: 'https://github.com/RanMd',
-      initials: 'AL'
+      initials: 'DC',
+      photo: '/team/daniel_calapiña.jpg',
     },
     {
       name: 'Dennis Chimborazo',
@@ -40,7 +44,8 @@ function Equipo() {
       specialty: 'Java · Kotlin · Microservicios',
       focus: 'Domain-driven design, data pipelines y optimización de bases.',
       github: 'https://github.com/Dennis-Chimborazo',
-      initials: 'DC'
+      initials: 'DX',
+      photo: '/team/dennis_chimborazo.jpg',
     },
     {
       name: 'Alexis Poaquiza',
@@ -48,8 +53,9 @@ function Equipo() {
       specialty: 'AWS · Kubernetes · Terraform',
       focus: 'Infraestructuras reproducibles, monitoreo y respuesta a incidentes.',
       github: 'https://github.com/AlexiP18',
-      initials: 'AP'
-    }
+      initials: 'AP',
+      photo: '/team/alexis_poaquiza.jpg',
+    },
   ];
 
   return (
@@ -64,9 +70,10 @@ function Equipo() {
         {team.map((member) => (
           <article className="talent-card" key={member.github}>
             <img
-              src={`https://placehold.co/200x200/151a1f/ffffff?text=${member.initials}`}
+              src={member.photo}
               alt={`Foto de ${member.name}`}
               loading="lazy"
+              onError={(e) => { e.currentTarget.src = `https://placehold.co/200x200/151a1f/ffffff?text=${member.initials}`; }}
             />
             <div className="talent-card__copy">
               <h3>{member.name}</h3>

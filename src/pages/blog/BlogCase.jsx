@@ -37,7 +37,7 @@ function BlogCase() {
 
       <section style={{ marginTop: '2.2rem' }}>
         <h2>Stack recomendado 2026</h2>
-        <div className="grid two" style={{ marginTop: '1rem' }}>
+        <div className="custom-grid two" style={{ marginTop: '1rem' }}>
           {stack.map((tool) => (
             <article className="case-card" key={tool.name}>
               <h3>{tool.name}</h3>
