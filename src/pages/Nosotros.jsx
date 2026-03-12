@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button.jsx';
+import { SiGithub, SiLinkedin } from 'react-icons/si';
 
 /* ─────────────────────────────────────────────────────────────
    DATOS
@@ -13,6 +14,8 @@ const EQUIPO = [
     accent: '#2DD4BF',
     bg: 'linear-gradient(135deg, #0d2d29, #1a4a44)',
     photo: '/team/alex_guachi.jpg',
+    github: '#',
+    linkedin: '#',
   },
   {
     nombre: 'Heidi Villavicencio',
@@ -21,6 +24,8 @@ const EQUIPO = [
     accent: '#818cf8',
     bg: 'linear-gradient(135deg, #0f0f2e, #1a1a4a)',
     photo: '/team/heidi_villavicencio.jpg',
+    github: '#',
+    linkedin: '#',
   },
   {
     nombre: 'Michelle Tunja',
@@ -29,6 +34,8 @@ const EQUIPO = [
     accent: '#f472b6',
     bg: 'linear-gradient(135deg, #1a0f1f, #2d1042)',
     photo: '/team/michelle_tunja.jpg',
+    github: '#',
+    linkedin: '#',
   },
   {
     nombre: 'Daniel Calapiña',
@@ -37,6 +44,8 @@ const EQUIPO = [
     accent: '#fb923c',
     bg: 'linear-gradient(135deg, #1a110a, #2d1f0e)',
     photo: '/team/daniel_calapiña.jpg',
+    github: '#',
+    linkedin: '#',
   },
   {
     nombre: 'Dennis Chimborazo',
@@ -45,6 +54,8 @@ const EQUIPO = [
     accent: '#34d399',
     bg: 'linear-gradient(135deg, #0a1e15, #0f2d1e)',
     photo: '/team/dennis_chimborazo.jpg',
+    github: '#',
+    linkedin: '#',
   },
   {
     nombre: 'Alexis Poaquiza',
@@ -53,6 +64,8 @@ const EQUIPO = [
     accent: '#67e8f9',
     bg: 'linear-gradient(135deg, #091418, #0f2026)',
     photo: '/team/alexis_poaquiza.jpg',
+    github: '#',
+    linkedin: '#',
   },
 ];
 
@@ -238,10 +251,10 @@ function Nosotros() {
 
           {/* Grid de avatares */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-            {EQUIPO.map(({ nombre, cargo, iniciales, accent, bg, photo }) => (
+            {EQUIPO.map(({ nombre, cargo, iniciales, accent, bg, photo, github, linkedin }) => (
               <div
                 key={nombre}
-                className="flex flex-col items-center gap-3 group cursor-default"
+                className="flex flex-col items-center gap-3 group cursor-default h-full"
               >
                 {/* Avatar circular */}
                 <div
@@ -288,6 +301,16 @@ function Nosotros() {
                   >
                     {cargo}
                   </p>
+                </div>
+
+                {/* Redes Sociales - fijadas al fondo */}
+                <div className="flex items-center justify-center gap-4 mt-auto pt-4 w-full border-t border-white/[0.06]">
+                  <a href={github || '#'} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-white transition-colors" title="GitHub">
+                    <SiGithub className="w-5 h-5 opacity-80 hover:opacity-100" />
+                  </a>
+                  <a href={linkedin || '#'} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-[#0A66C2] transition-colors" title="LinkedIn">
+                    <SiLinkedin className="w-5 h-5 opacity-80 hover:opacity-100" />
+                  </a>
                 </div>
               </div>
             ))}

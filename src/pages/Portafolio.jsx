@@ -7,6 +7,25 @@ import Button from '../components/Button.jsx';
 ───────────────────────────────────────────────────────────── */
 const PROYECTOS = [
   {
+    id: 0,
+    titulo: 'MED/IA: Asistente de Salud con IA',
+    slug: '/portafolio/media',
+    categoria: 'Sistemas',
+    descripcion:
+      'VitalIA: Sistema Inteligente de Triaje y Gestión de Salud. PWA que utiliza NLP para clasificar síntomas por gravedad y agendar citas automáticamente.',
+    tags: ['#Vue.js', '#NestJS', '#AI', '#PostgreSQL'],
+    accent: '#2DD4BF',
+    gradientFrom: '#0B1120',
+    gradientTo: '#0f292e',
+    icon: (
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+      </svg>
+    ),
+  },
+  {
     id: 1,
     titulo: 'Sistema Financiero Andino',
     categoria: 'Sistemas',
@@ -184,24 +203,42 @@ function ProjectCard({ proyecto }) {
             backdropFilter: imgHovered ? 'blur(4px)' : 'blur(0px)',
           }}
         >
-          <button
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-ui font-semibold text-sm
-                       transition-all duration-300"
-            style={{
-              background: accent,
-              color: '#0B1120',
-              opacity: imgHovered ? 1 : 0,
-              transform: imgHovered ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.95)',
-              boxShadow: `0 0 20px ${accent}60`,
-            }}
-          >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
-            Ver Caso de Estudio
-          </button>
+          {proyecto.slug ? (
+            <Link
+              to={proyecto.slug}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-ui font-semibold text-sm transition-all duration-300 no-underline"
+              style={{
+                background: accent,
+                color: '#0B1120',
+                opacity: imgHovered ? 1 : 0,
+                transform: imgHovered ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.95)',
+                boxShadow: `0 0 20px ${accent}60`,
+              }}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              Ver Caso de Estudio
+            </Link>
+          ) : (
+            <button
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl font-ui font-semibold text-sm transition-all duration-300"
+              style={{
+                background: accent,
+                color: '#0B1120',
+                opacity: imgHovered ? 1 : 0,
+                transform: imgHovered ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.95)',
+                boxShadow: `0 0 20px ${accent}60`,
+              }}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              Ver Caso de Estudio
+            </button>
+          )}
         </div>
 
         {/* Badge de categoría */}

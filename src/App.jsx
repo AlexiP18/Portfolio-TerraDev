@@ -18,6 +18,7 @@ import Blog from './pages/Blog.jsx';
 import BlogIa from './pages/blog/BlogIa.jsx';
 import BlogCase from './pages/blog/BlogCase.jsx';
 import BlogCloud from './pages/blog/BlogCloud.jsx';
+import CaseStudyMedia from './pages/CaseStudyMedia.jsx';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 
@@ -64,6 +65,7 @@ function App() {
           <Route path="/servicios"   element={<Servicios />} />
           <Route path="/metodologia" element={<Metodologia />} />
           <Route path="/portafolio"  element={<Portafolio />} />
+          <Route path="/portafolio/media" element={<CaseStudyMedia />} />
           <Route path="/nosotros"    element={<Nosotros />} />
           <Route path="/contacto"    element={<Contacto />} />
           <Route path="/blog"        element={<Blog />} />

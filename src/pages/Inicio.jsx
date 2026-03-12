@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button.jsx';
+import { SiGithub, SiLinkedin } from 'react-icons/si';
 
 /* ─────────────────────────────────────────────────────────────
    SECCIÓN 1 — HERO
@@ -20,16 +21,16 @@ function HeroVisual() {
       <div className="relative glass rounded-2xl p-6 sm:p-8 flex flex-col items-center gap-3 w-52 sm:w-64 text-center">
         {/* Logo SVG isométrico placeholder */}
         <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="56" height="56" rx="14" fill="#2DD4BF" fillOpacity="0.12"/>
-          <rect x="1.5" y="1.5" width="53" height="53" rx="12.5" stroke="#2DD4BF" strokeOpacity="0.4" strokeWidth="1.5"/>
+          <rect width="56" height="56" rx="14" fill="#2DD4BF" fillOpacity="0.12" />
+          <rect x="1.5" y="1.5" width="53" height="53" rx="12.5" stroke="#2DD4BF" strokeOpacity="0.4" strokeWidth="1.5" />
           {/* T isométrica */}
-          <path d="M14 18h28M28 18v20" stroke="#2DD4BF" strokeWidth="3.5" strokeLinecap="round"/>
-          <circle cx="38" cy="38" r="3.5" fill="#2DD4BF"/>
+          <path d="M14 18h28M28 18v20" stroke="#2DD4BF" strokeWidth="3.5" strokeLinecap="round" />
+          <circle cx="38" cy="38" r="3.5" fill="#2DD4BF" />
           {/* Tres puntos circuito */}
-          <circle cx="14" cy="38" r="2" fill="#2DD4BF" fillOpacity="0.5"/>
-          <circle cx="21" cy="38" r="2" fill="#2DD4BF" fillOpacity="0.3"/>
-          <line x1="16" y1="38" x2="19" y2="38" stroke="#2DD4BF" strokeOpacity="0.4" strokeWidth="1"/>
-          <line x1="23" y1="38" x2="34.5" y2="38" stroke="#2DD4BF" strokeOpacity="0.3" strokeWidth="1" strokeDasharray="2 2"/>
+          <circle cx="14" cy="38" r="2" fill="#2DD4BF" fillOpacity="0.5" />
+          <circle cx="21" cy="38" r="2" fill="#2DD4BF" fillOpacity="0.3" />
+          <line x1="16" y1="38" x2="19" y2="38" stroke="#2DD4BF" strokeOpacity="0.4" strokeWidth="1" />
+          <line x1="23" y1="38" x2="34.5" y2="38" stroke="#2DD4BF" strokeOpacity="0.3" strokeWidth="1" strokeDasharray="2 2" />
         </svg>
 
         <div>
@@ -53,9 +54,9 @@ function HeroVisual() {
 
       {/* Puntos satélite */}
       {[
-        { label: 'CI/CD',    pos: 'top-4 right-6' },
-        { label: 'Flutter',  pos: 'bottom-8 left-4' },
-        { label: 'UI/UX',    pos: 'top-12 left-2' },
+        { label: 'CI/CD', pos: 'top-4 right-6' },
+        { label: 'Flutter', pos: 'bottom-8 left-4' },
+        { label: 'UI/UX', pos: 'top-12 left-2' },
       ].map(({ label, pos }) => (
         <div
           key={label}
@@ -136,9 +137,9 @@ function Hero() {
             {/* Métricas rápidas */}
             <div className="flex flex-wrap gap-6 pt-3 border-t border-white/[0.08] w-full">
               {[
-                { value: '+50',    label: 'Proyectos' },
-                { value: '∞',      label: 'Escalabilidad' },
-                { value: '24/7',   label: 'CI/CD activo' },
+                { value: '+50', label: 'Proyectos' },
+                { value: '∞', label: 'Escalabilidad' },
+                { value: '24/7', label: 'CI/CD activo' },
               ].map(({ value, label }) => (
                 <div key={label} className="flex flex-col">
                   <span className="font-heading font-bold text-2xl text-text-main">{value}</span>
@@ -169,7 +170,7 @@ const SERVICIOS = [
     size: 'lg',   // ocupa 2 cols en desktop
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        <rect x="2" y="3" width="20" height="14" rx="2" /><line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" />
       </svg>
     ),
     title: 'Desarrollo Web',
@@ -182,7 +183,7 @@ const SERVICIOS = [
     size: 'md',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+        <rect x="5" y="2" width="14" height="20" rx="2" /><line x1="12" y1="18" x2="12.01" y2="18" />
       </svg>
     ),
     title: 'Apps Móviles',
@@ -195,8 +196,8 @@ const SERVICIOS = [
     size: 'md',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/>
-        <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+        <polyline points="16 16 12 12 8 16" /><line x1="12" y1="12" x2="12" y2="21" />
+        <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" />
       </svg>
     ),
     title: 'Cloud & DevOps',
@@ -209,9 +210,9 @@ const SERVICIOS = [
     size: 'lg',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/>
-        <line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/>
-        <line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/>
+        <circle cx="12" cy="12" r="10" /><circle cx="12" cy="12" r="4" />
+        <line x1="4.93" y1="4.93" x2="9.17" y2="9.17" /><line x1="14.83" y1="14.83" x2="19.07" y2="19.07" />
+        <line x1="14.83" y1="9.17" x2="19.07" y2="4.93" /><line x1="4.93" y1="19.07" x2="9.17" y2="14.83" />
       </svg>
     ),
     title: 'UI/UX Design',
@@ -224,7 +225,7 @@ const SERVICIOS = [
 function ServiceCard({ icon, title, desc, tags, accent, size }) {
   const colSpan =
     size === 'lg' ? 'md:col-span-2' :
-    size === 'md' ? 'md:col-span-1' : 'md:col-span-1';
+      size === 'md' ? 'md:col-span-1' : 'md:col-span-1';
 
   return (
     <div
@@ -298,37 +299,37 @@ function Servicios() {
       style={{ minHeight: '100dvh' }}
     >
       <div className="max-w-6xl mx-auto px-6 w-full py-10 lg:py-14">
-      {/* Header */}
-      <div className="flex flex-col items-center text-center mb-8 gap-3">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/8">
-          <span className="font-ui font-medium text-xs text-primary uppercase tracking-widest">
-            Stack Tecnológico
-          </span>
+        {/* Header */}
+        <div className="flex flex-col items-center text-center mb-8 gap-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/8">
+            <span className="font-ui font-medium text-xs text-primary uppercase tracking-widest">
+              Stack Tecnológico
+            </span>
+          </div>
+          <h2 className="font-heading font-bold text-text-main text-2xl sm:text-3xl lg:text-4xl leading-tight">
+            Nuestro Stack{' '}
+            <span
+              style={{
+                backgroundImage: 'linear-gradient(135deg, #2DD4BF, #67e8f9)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              Tecnológico
+            </span>
+          </h2>
+          <p className="font-body text-text-body text-base max-w-xl">
+            Elegimos las herramientas correctas para cada problema — no seguimos tendencias, seguimos resultados.
+          </p>
         </div>
-        <h2 className="font-heading font-bold text-text-main text-2xl sm:text-3xl lg:text-4xl leading-tight">
-          Nuestro Stack{' '}
-          <span
-            style={{
-              backgroundImage: 'linear-gradient(135deg, #2DD4BF, #67e8f9)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
-            Tecnológico
-          </span>
-        </h2>
-        <p className="font-body text-text-body text-base max-w-xl">
-          Elegimos las herramientas correctas para cada problema — no seguimos tendencias, seguimos resultados.
-        </p>
-      </div>
 
-      {/* Bento Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {SERVICIOS.map((s) => (
-          <ServiceCard key={s.id} {...s} />
-        ))}
-      </div>
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {SERVICIOS.map((s) => (
+            <ServiceCard key={s.id} {...s} />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -345,7 +346,7 @@ const PIPELINE = [
     label: 'Plan',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        <path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
       </svg>
     ),
     desc: 'Levantamos requerimientos, priorizamos con metodología ágil y construimos el roadmap.',
@@ -356,7 +357,7 @@ const PIPELINE = [
     label: 'Code',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+        <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
       </svg>
     ),
     desc: 'Sprints iterativos con revisiones continuas. Código limpio, bien documentado y bajo control de versiones.',
@@ -367,7 +368,7 @@ const PIPELINE = [
     label: 'Build',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
       </svg>
     ),
     desc: 'Tests automáticos, builds reproducibles y artefactos listos para producción en cada commit.',
@@ -378,8 +379,8 @@ const PIPELINE = [
     label: 'Deploy',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/>
-        <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>
+        <polyline points="16 16 12 12 8 16" /><line x1="12" y1="12" x2="12" y2="21" />
+        <path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" />
       </svg>
     ),
     desc: 'Despliegue continuo a producción. Monitoring en tiempo real y rollback instantáneo si es necesario.',
@@ -482,7 +483,7 @@ function Metodologia() {
                 {idx < PIPELINE.length - 1 && (
                   <div className="hidden lg:flex absolute -right-2 top-[34px] z-10 text-primary/40">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="9 18 15 12 9 6"/>
+                      <polyline points="9 18 15 12 9 6" />
                     </svg>
                   </div>
                 )}
@@ -511,19 +512,19 @@ function Metodologia() {
 ───────────────────────────────────────────────────────────── */
 
 const EQUIPO = [
-  { nombre: 'Alex Guachi',         rol: 'Tech Lead · Backend',    initials: 'AG', color: '#2DD4BF', photo: '/team/alex_guachi.jpg'         },
-  { nombre: 'Heidi Villavicencio', rol: 'Product Engineer',       initials: 'HV', color: '#818cf8', photo: '/team/heidi_villavicencio.jpg'  },
-  { nombre: 'Michelle Tunja',      rol: 'Lead UX / Frontend',     initials: 'MT', color: '#f472b6', photo: '/team/michelle_tunja.jpg'       },
-  { nombre: 'Daniel Calapiña',     rol: 'Platform Engineer',      initials: 'DC', color: '#fb923c', photo: '/team/daniel_calapiña.jpg'      },
-  { nombre: 'Dennis Chimborazo',   rol: 'Backend Specialist',     initials: 'DX', color: '#34d399', photo: '/team/dennis_chimborazo.jpg'    },
-  { nombre: 'Alexis Poaquiza',     rol: 'DevOps & Reliability',   initials: 'AP', color: '#a78bfa', photo: '/team/alexis_poaquiza.jpg'      },
+  { nombre: 'Alex Guachi', rol: 'Tech Lead · Backend', initials: 'AG', color: '#2DD4BF', photo: '/team/alex_guachi.jpg', github: '#', linkedin: '#' },
+  { nombre: 'Heidi Villavicencio', rol: 'Product Engineer', initials: 'HV', color: '#818cf8', photo: '/team/heidi_villavicencio.jpg', github: '#', linkedin: '#' },
+  { nombre: 'Michelle Tunja', rol: 'Lead UX / Frontend', initials: 'MT', color: '#f472b6', photo: '/team/michelle_tunja.jpg', github: '#', linkedin: '#' },
+  { nombre: 'Daniel Calapiña', rol: 'Platform Engineer', initials: 'DC', color: '#fb923c', photo: '/team/daniel_calapiña.jpg', github: '#', linkedin: '#' },
+  { nombre: 'Dennis Chimborazo', rol: 'Backend Specialist', initials: 'DX', color: '#34d399', photo: '/team/dennis_chimborazo.jpg', github: '#', linkedin: '#' },
+  { nombre: 'Alexis Poaquiza', rol: 'DevOps & Reliability', initials: 'AP', color: '#a78bfa', photo: '/team/alexis_poaquiza.jpg', github: '#', linkedin: '#' },
 ];
 
 const VALORES = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
       </svg>
     ),
     titulo: 'Excelencia Técnica',
@@ -532,8 +533,8 @@ const VALORES = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     ),
     titulo: 'Equipo Local',
@@ -542,7 +543,7 @@ const VALORES = [
   {
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />
       </svg>
     ),
     titulo: 'Escala Global',
@@ -550,138 +551,11 @@ const VALORES = [
   },
 ];
 
-function Nosotros() {
-  return (
-    <section
-      className="w-full flex items-center"
-      style={{ minHeight: '100dvh' }}
-    >
-    <div className="w-full max-w-6xl mx-auto px-6 py-10 lg:py-14">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-
-        {/* ── Columna izquierda: texto ───────────────────── */}
-        <div className="flex flex-col gap-7">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/8 w-fit">
-            <span className="font-ui font-medium text-xs text-primary uppercase tracking-widest">
-              Quiénes somos
-            </span>
-          </div>
-
-          <h2 className="font-heading font-bold text-text-main text-2xl sm:text-3xl lg:text-4xl leading-tight">
-            Código con{' '}
-            <span
-              style={{
-                backgroundImage: 'linear-gradient(135deg, #2DD4BF, #67e8f9)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              Carácter.
-            </span>
-          </h2>
-
-          <p className="font-body text-text-body text-base leading-relaxed">
-            Desde Ambato para el mundo. Combinamos la{' '}
-            <span className="text-text-main font-medium">tenacidad del Tungurahua</span>{' '}
-            con estándares globales de ingeniería.
-          </p>
-
-          <p className="font-body text-text-body text-base leading-relaxed">
-            No somos una fábrica de código. Somos un equipo pequeño, enfocado y comprometido con cada proyecto que tomamos. Cada línea que escribimos tiene propósito.
-          </p>
-
-          {/* Valores */}
-          <div className="flex flex-col gap-3 mt-1">
-            {VALORES.map(({ icon, titulo, texto }) => (
-              <div
-                key={titulo}
-                className="flex items-start gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.07] hover:border-primary/20 hover:bg-primary/[0.04] transition-all duration-300 group"
-              >
-                <div className="shrink-0 w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
-                  {icon}
-                </div>
-                <div>
-                  <p className="font-ui font-semibold text-text-main text-sm mb-0.5">{titulo}</p>
-                  <p className="font-body text-text-muted text-sm leading-relaxed">{texto}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── Columna derecha: equipo ────────────────────── */}
-        <div className="flex flex-col gap-5">
-          {/* Card glassmorphism contenedor */}
-          <div className="glass rounded-3xl p-6 flex flex-col gap-6">
-            {/* Stat banner */}
-            <div className="grid grid-cols-3 gap-4 pb-6 border-b border-white/[0.08]">
-              {[
-                { v: '5+',   l: 'Años activos' },
-                { v: '+50',  l: 'Proyectos' },
-                { v: '100%', l: 'Remoto-ready' },
-              ].map(({ v, l }) => (
-                <div key={l} className="flex flex-col items-center text-center">
-                  <span className="font-heading font-bold text-text-main text-2xl sm:text-3xl">{v}</span>
-                  <span className="font-body text-text-muted text-xs mt-1">{l}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Grid de avatares */}
-            <div>
-              <p className="font-ui font-semibold text-text-muted text-xs uppercase tracking-widest mb-4">
-                El Equipo
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                {EQUIPO.map(({ nombre, rol, initials, color, photo }) => (
-                  <div
-                    key={nombre}
-                    className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-primary/25 hover:bg-primary/[0.04] transition-all duration-300 group cursor-default"
-                  >
-                    {/* Avatar circular */}
-                    <div
-                      className="w-14 h-14 rounded-full shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg overflow-hidden"
-                      style={{ boxShadow: `0 0 20px ${color}30` }}
-                    >
-                      <img
-                        src={photo}
-                        alt={nombre}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          e.currentTarget.style.display = 'none';
-                          e.currentTarget.nextSibling.style.display = 'flex';
-                        }}
-                      />
-                      <div
-                        className="w-full h-full hidden items-center justify-center font-heading font-bold text-base text-bg-main"
-                        style={{ background: `linear-gradient(135deg, ${color}, ${color}99)` }}
-                      >
-                        {initials}
-                      </div>
-                    </div>
-                    <div className="text-center">
-                      <p className="font-ui font-semibold text-text-main text-sm leading-tight">{nombre}</p>
-                      <p className="font-body text-text-muted text-xs mt-0.5 leading-tight">{rol}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    </section>
-  );
-}
-
 /* ─────────────────────────────────────────────────────────────
-   SECCIÓN 5 — CONTACTO (SPLIT SCREEN)
+   SECCIÓN 5 — CONTACTO(SPLIT SCREEN)
 ───────────────────────────────────────────────────────────── */
 
-function ContactoSection() {
+function ContactoSection({ siteSettings }) {
   const [form, setForm] = React.useState({ nombre: '', email: '', proyecto: '', mensaje: '' });
   const [status, setStatus] = React.useState('idle'); // idle | sending | sent
 
@@ -702,6 +576,9 @@ function ContactoSection() {
     'font-body text-text-main text-base placeholder:text-text-muted ' +
     'focus:outline-none focus:border-primary transition-colors duration-300 ' +
     'hover:border-white/30';
+
+  const email = siteSettings?.contactEmail || 'hola@terrabyte.ec';
+  const location = siteSettings?.location || 'Ambato, Tungurahua · Ecuador 🇪🇨';
 
   return (
     <section
@@ -752,29 +629,29 @@ function ContactoSection() {
                 {
                   icon: (
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                      <polyline points="22,6 12,13 2,6"/>
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
                     </svg>
                   ),
                   label: 'Email',
-                  value: 'hola@terrabyte.ec',
-                  href: 'mailto:hola@terrabyte.ec',
+                  value: email,
+                  href: `mailto:${email}`,
                 },
                 {
                   icon: (
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                      <circle cx="12" cy="10" r="3"/>
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
                     </svg>
                   ),
                   label: 'Ubicación',
-                  value: 'Ambato, Tungurahua · Ecuador 🇪🇨',
-                  href: 'https://maps.google.com/?q=Ambato+Ecuador',
+                  value: location,
+                  href: `https://maps.google.com/?q=${encodeURIComponent(location)}`,
                 },
                 {
                   icon: (
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                      <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
                     </svg>
                   ),
                   label: 'Respuesta',
@@ -821,7 +698,7 @@ function ContactoSection() {
               <div className="flex flex-col items-center justify-center gap-6 text-center h-full min-h-[360px]">
                 <div className="w-16 h-16 rounded-full bg-primary/15 border border-primary/40 flex items-center justify-center">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
+                    <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
                 <div>
@@ -940,7 +817,7 @@ function ContactoSection() {
                   {status === 'sending' ? (
                     <>
                       <svg className="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
                       </svg>
                       Enviando…
                     </>
@@ -948,7 +825,7 @@ function ContactoSection() {
                     <>
                       Enviar Mensaje
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                        <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                       </svg>
                     </>
                   )}
@@ -971,14 +848,287 @@ function ContactoSection() {
 /* ─────────────────────────────────────────────────────────────
    PÁGINA DE INICIO
 ───────────────────────────────────────────────────────────── */
+import { useEffect, useState } from 'react';
+import { client, urlFor } from '../sanity/client';
+import { HOMEPAGE_QUERY, TEAM_MEMBERS_QUERY, SITE_SETTINGS_QUERY } from '../sanity/queries';
+
+// Modificamos Hero para aceptar props de settings y homeData
+function HeroSection({ settings, homeData }) {
+  const title = homeData?.heroTitle || settings?.heroHeadline || 'Ingeniería de Software desde el Centro de los Andes.';
+  const description = homeData?.heroDescription || settings?.heroSubheadline || 'Transformamos ideas en código eficiente.';
+  const pill = homeData?.heroPill || 'Ambato, Ecuador · Disponible';
+
+  // Parseamos las métricas
+  const defaultMetrics = [
+    { value: '+50', label: 'Proyectos' },
+    { value: '∞', label: 'Escalabilidad' },
+    { value: '24/7', label: 'CI/CD activo' },
+  ];
+  const activeMetrics = homeData?.metrics?.length ? homeData.metrics : defaultMetrics;
+
+  return (
+    <section
+      className="relative flex items-center overflow-hidden"
+      style={{
+        height: 'calc(100dvh - 68px)',
+        background: 'radial-gradient(ellipse 80% 60% at 50% -20%, rgba(45,212,191,0.07) 0%, transparent 70%), #0B1120',
+      }}
+    >
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.035]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(248,250,252,1) 1px, transparent 1px), linear-gradient(90deg, rgba(248,250,252,1) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+        }}
+      />
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* ── Texto ─────────────────────────────────────── */}
+          <div className="flex flex-col items-start gap-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/8">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              <span className="font-ui font-medium text-xs text-primary uppercase tracking-widest">
+                {pill}
+              </span>
+            </div>
+
+            <h1 className="font-heading font-bold text-text-main text-3xl sm:text-4xl lg:text-[3rem] leading-[1.1] tracking-tight whitespace-pre-line">
+              {title}
+            </h1>
+
+            <p className="font-body text-text-body text-base sm:text-lg leading-relaxed max-w-xl">
+              {description}
+            </p>
+
+            <div className="flex flex-wrap items-center gap-3">
+              <Button as={Link} to="/contacto" variant="primary" size="lg">
+                Cotizar Ahora
+              </Button>
+              <Button as={Link} to="/proyectos" variant="outline" size="lg">
+                Ver Portafolio
+              </Button>
+            </div>
+
+            <div className="flex flex-wrap gap-6 pt-3 border-t border-white/[0.08] w-full">
+              {activeMetrics.map(({ value, label }) => (
+                <div key={label} className="flex flex-col">
+                  <span className="font-heading font-bold text-2xl text-text-main">{value}</span>
+                  <span className="font-body text-xs text-text-muted mt-0.5">{label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Visual ────────────────────────────────────── */}
+          <div className="hidden sm:flex items-center justify-center">
+            <HeroVisual />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Modificamos Nosotros para aceptar props de teamData
+function Nosotros({ teamData }) {
+  const activeTeam = teamData?.length ? teamData : EQUIPO;
+
+  return (
+    <section
+      className="w-full flex items-center"
+      style={{ minHeight: '100dvh' }}
+    >
+      <div className="w-full max-w-6xl mx-auto px-6 py-10 lg:py-14">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+          {/* ── Columna izquierda: texto ───────────────────── */}
+          <div className="flex flex-col gap-7">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/8 w-fit">
+              <span className="font-ui font-medium text-xs text-primary uppercase tracking-widest">
+                Quiénes somos
+              </span>
+            </div>
+
+            <h2 className="font-heading font-bold text-text-main text-2xl sm:text-3xl lg:text-4xl leading-tight">
+              Código con{' '}
+              <span
+                style={{
+                  backgroundImage: 'linear-gradient(135deg, #2DD4BF, #67e8f9)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                Carácter.
+              </span>
+            </h2>
+
+            <p className="font-body text-text-body text-base leading-relaxed">
+              Desde Ambato para el mundo. Combinamos la{' '}
+              <span className="text-text-main font-medium">tenacidad del Tungurahua</span>{' '}
+              con estándares globales de ingeniería.
+            </p>
+
+            <p className="font-body text-text-body text-base leading-relaxed">
+              No somos una fábrica de código. Somos un equipo pequeño, enfocado y comprometido con cada proyecto que tomamos. Cada línea que escribimos tiene propósito.
+            </p>
+
+            {/* Valores */}
+            <div className="flex flex-col gap-3 mt-1">
+              {VALORES.map(({ icon, titulo, texto }) => (
+                <div
+                  key={titulo}
+                  className="flex items-start gap-4 p-4 rounded-xl bg-white/[0.03] border border-white/[0.07] hover:border-primary/20 hover:bg-primary/[0.04] transition-all duration-300 group"
+                >
+                  <div className="shrink-0 w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary/20 group-hover:scale-110 transition-all duration-300">
+                    {icon}
+                  </div>
+                  <div>
+                    <p className="font-ui font-semibold text-text-main text-sm mb-0.5">{titulo}</p>
+                    <p className="font-body text-text-muted text-sm leading-relaxed">{texto}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Columna derecha: equipo ────────────────────── */}
+          <div className="flex flex-col gap-5">
+            {/* Card glassmorphism contenedor */}
+            <div className="glass rounded-3xl p-6 flex flex-col gap-6">
+              {/* Stat banner */}
+              <div className="grid grid-cols-3 gap-4 pb-6 border-b border-white/[0.08]">
+                {[
+                  { v: '5+', l: 'Años activos' },
+                  { v: '+50', l: 'Proyectos' },
+                  { v: '100%', l: 'Remoto-ready' },
+                ].map(({ v, l }) => (
+                  <div key={l} className="flex flex-col items-center text-center">
+                    <span className="font-heading font-bold text-text-main text-2xl sm:text-3xl">{v}</span>
+                    <span className="font-body text-text-muted text-xs mt-1">{l}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Grid de avatares */}
+              <div>
+                <p className="font-ui font-semibold text-text-muted text-xs uppercase tracking-widest mb-4">
+                  El Equipo
+                </p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  {activeTeam.map((member) => {
+                    const nombre = member.name || member.nombre;
+                    const rol = member.title || member.rol;
+                    const initials = member.initials || 'EC';
+                    const color = member.color || '#2DD4BF';
+                    // Revisar si existe `photo.asset` (Sanity) o es string plano (Placeholder)
+                    const photoSrc = member.photo?.asset
+                      ? urlFor(member.photo).width(200).height(200).url()
+                      : member.photo;
+
+                    return (
+                      <div
+                        key={nombre}
+                        className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-primary/25 hover:bg-primary/[0.04] transition-all duration-300 group cursor-default h-full"
+                      >
+                        {/* Avatar circular */}
+                        <div
+                          className="w-14 h-14 rounded-full shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg overflow-hidden"
+                          style={{ boxShadow: `0 0 20px ${color}30` }}
+                        >
+                          {photoSrc ? (
+                            <>
+                              <img
+                                src={photoSrc}
+                                alt={nombre}
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                  e.currentTarget.style.display = 'none';
+                                  e.currentTarget.nextSibling.style.display = 'flex';
+                                }}
+                              />
+                              <div
+                                className="w-full h-full hidden items-center justify-center font-heading font-bold text-base text-bg-main"
+                                style={{ background: color.includes('gradient') ? color : `linear-gradient(135deg, ${color}, ${color}99)` }}
+                              >
+                                {initials}
+                              </div>
+                            </>
+                          ) : (
+                            <div
+                              className="w-full h-full flex items-center justify-center font-heading font-bold text-base text-bg-main"
+                              style={{ background: color.includes('gradient') ? color : `linear-gradient(135deg, ${color}, ${color}99)` }}
+                            >
+                              {initials}
+                            </div>
+                          )}
+                        </div>
+                        <div className="text-center">
+                          <p className="font-ui font-semibold text-text-main text-sm leading-tight">{nombre}</p>
+                          <p className="font-body text-text-muted text-xs mt-0.5 leading-tight">{rol}</p>
+                        </div>
+                        {/* Redes Sociales — fijadas al footer */}
+                        <div className="flex items-center gap-3 mt-auto pt-2 border-t border-white/[0.06] w-full justify-center">
+                          <a href={member.github || '#'} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors" title="GitHub">
+                            <SiGithub className="w-4 h-4" />
+                          </a>
+                          <a href={member.linkedin || '#'} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#0A66C2] transition-colors" title="LinkedIn">
+                            <SiLinkedin className="w-4 h-4" />
+                          </a>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Modificamos Inicio principal para obtener la data global
 function Inicio() {
+  const [data, setData] = useState({
+    settings: null,
+    home: null,
+    team: []
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    Promise.all([
+      client.fetch(SITE_SETTINGS_QUERY),
+      client.fetch(HOMEPAGE_QUERY),
+      client.fetch(TEAM_MEMBERS_QUERY),
+    ]).then(([settings, home, team]) => {
+      setData({ settings, home, team });
+    }).catch(err => {
+      console.error("Error fetching Sanity data in Inicio:", err);
+    }).finally(() => {
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex w-full h-screen items-center justify-center">
+        <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col w-full">
-      <Hero />
+      <HeroSection settings={data.settings} homeData={data.home} />
       <Servicios />
       <Metodologia />
-      <Nosotros />
-      <ContactoSection />
+      <Nosotros teamData={data.team} />
+      <ContactoSection siteSettings={data.settings} />
     </div>
   );
 }

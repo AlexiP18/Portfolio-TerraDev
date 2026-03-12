@@ -31,6 +31,28 @@ export const siteSettings = defineType({
   // __experimental_actions: ['update', 'publish'],
 
   fields: [
+    // ── Logos y Favicon ────────────────────────────────────
+    defineField({
+      name: 'logoLight',
+      title: 'Logo Principal (Light/Default)',
+      type: 'image',
+      description: 'Se usará en la cabecera (Navbar) y pie de página.',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'logoDark',
+      title: 'Logo Alternativo (Dark Mode)',
+      type: 'image',
+      description: 'Por si necesitas una versión clara del logo para fondos oscuros.',
+      options: { hotspot: true },
+    }),
+    defineField({
+      name: 'favicon',
+      title: 'Favicon',
+      type: 'image',
+      description: 'Icono del navegador (idealmente 32x32 o 64x64 px).',
+    }),
+
     // ── Título del sitio ───────────────────────────────────
     defineField({
       name: 'siteTitle',
@@ -63,10 +85,10 @@ export const siteSettings = defineType({
       validation: (Rule) => Rule.max(220),
     }),
 
-    // ── Email de contacto ──────────────────────────────────
+    // ── Email de contacto principal ────────────────────────
     defineField({
       name: 'contactEmail',
-      title: 'Email de contacto',
+      title: 'Email de contacto (Principal)',
       type: 'string',
       description: 'Mostrado en el footer y la página de Contacto.',
       initialValue: 'hola@terrabyte.ec',
@@ -75,6 +97,35 @@ export const siteSettings = defineType({
           /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
           { name: 'email', invert: false }
         ).error('Debe ser un email válido.'),
+    }),
+
+    // ── Email de contacto secundario ───────────────────────
+    defineField({
+      name: 'secondaryEmail',
+      title: 'Email Secundario (Ej: Soporte)',
+      type: 'string',
+      description: 'Opcional. Mostrado como alternativa en Contacto.',
+      validation: (Rule) =>
+        Rule.regex(
+          /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+          { name: 'email', invert: false }
+        ).error('Debe ser un email válido o dejarlo vacío.'),
+    }),
+
+    // ── Teléfono de contacto ───────────────────────────────
+    defineField({
+      name: 'phoneNumber',
+      title: 'Número de Teléfono / WhatsApp',
+      type: 'string',
+      description: 'Ej: +593 99 999 9999',
+    }),
+
+    // ── Ubicación / Dirección ──────────────────────────────
+    defineField({
+      name: 'location',
+      title: 'Ubicación física',
+      type: 'string',
+      description: 'Ej: Av. Principal 123 y Secundaria, Ambato, Ecuador.',
     }),
 
     // ── Redes sociales ─────────────────────────────────────

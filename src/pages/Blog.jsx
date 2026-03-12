@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { client } from '../sanity/client';
+import { client, urlFor } from '../sanity/client';
 import { ALL_POSTS_QUERY } from '../sanity/queries';
 
 /* ─────────────────────────────────────────────────────────────
@@ -83,14 +83,14 @@ const PLACEHOLDER_POSTS = [
 ];
 
 const ACCENT_MAP = {
-  Frontend:     '#818cf8',
-  Backend:      '#34d399',
-  DevOps:       '#fb923c',
-  Cloud:        '#2DD4BF',
-  Mobile:       '#f472b6',
-  Data:         '#67e8f9',
+  Frontend: '#818cf8',
+  Backend: '#34d399',
+  DevOps: '#fb923c',
+  Cloud: '#2DD4BF',
+  Mobile: '#f472b6',
+  Data: '#67e8f9',
   Arquitectura: '#a78bfa',
-  Ingeniería:   '#fbbf24',
+  Ingeniería: '#fbbf24',
 };
 
 function categoryAccent(cat) {
@@ -114,8 +114,33 @@ function formatDate(iso) {
    imagen real de Sanity)
 ───────────────────────────────────────────────────────────── */
 function PostImagePlaceholder({ post, className = '' }) {
+  // 1. Si el post tiene imagen de Sanity, la usamos
+  if (post.mainImage && post.mainImage.asset) {
+    return (
+      <img
+        src={urlFor(post.mainImage).width(800).height(450).auto('format').fit('crop').url()}
+        alt={post.mainImage.alt || post.title || 'Imagen del artículo'}
+        className={`w-full h-full object-cover ${className}`}
+        loading="lazy"
+      />
+    );
+  }
+
+  // 2. Si es uno de los PLACEHOLDER con imagen externa
+  if (post.image) {
+    return (
+      <img
+        src={post.image}
+        alt={post.title || 'Imagen del artículo'}
+        className={`w-full h-full object-cover ${className}`}
+        loading="lazy"
+      />
+    );
+  }
+
+  // 3. Fallback visual generativo si no hay imagen
   const from = post.gradientFrom ?? '#0d2d29';
-  const to   = post.gradientTo   ?? '#1a4a44';
+  const to = post.gradientTo ?? '#1a4a44';
   const accent = post.accent ?? '#2DD4BF';
 
   return (
@@ -138,11 +163,11 @@ function PostImagePlaceholder({ post, className = '' }) {
       >
         <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/>
-          <line x1="16" y1="17" x2="8" y2="17"/>
-          <polyline points="10 9 9 9 8 9"/>
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="16" y1="13" x2="8" y2="13" />
+          <line x1="16" y1="17" x2="8" y2="17" />
+          <polyline points="10 9 9 9 8 9" />
         </svg>
       </div>
     </div>
@@ -262,8 +287,8 @@ function BlogCard({ post }) {
             stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
             className="transition-transform duration-200 group-hover/link:translate-x-1"
           >
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
           </svg>
         </Link>
       </div>
@@ -350,7 +375,7 @@ function FeaturedPost({ post }) {
             Leer artículo
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
               stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+              <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
             </svg>
           </Link>
         </div>
@@ -363,18 +388,24 @@ function FeaturedPost({ post }) {
    PÁGINA: Blog
 ───────────────────────────────────────────────────────────── */
 function Blog() {
-  const [posts, setPosts]     = useState([]);
+  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     client
       .fetch(ALL_POSTS_QUERY)
-      .then((data) => setPosts(data?.length ? data : PLACEHOLDER_POSTS))
-      .catch(() => setPosts(PLACEHOLDER_POSTS))
+      .then((data) => {
+        // console.log("Posts recibidos de Sanity:", data); // Descomenta esto para hacer debug
+        setPosts(data?.length ? data : PLACEHOLDER_POSTS);
+      })
+      .catch((err) => {
+        console.error("Error obteniendo datos de Sanity:", err);
+        setPosts(PLACEHOLDER_POSTS);
+      })
       .finally(() => setLoading(false));
   }, []);
 
-  const featuredPost  = posts[0] ?? null;
+  const featuredPost = posts[0] ?? null;
   const remainingPosts = posts.slice(1);
 
   return (
@@ -426,8 +457,8 @@ function Blog() {
           <div className="flex flex-wrap justify-center gap-8 pt-4 border-t border-white/[0.08] w-full max-w-sm">
             {[
               { v: `${PLACEHOLDER_POSTS.length}`, l: 'Artículos' },
-              { v: '4',                           l: 'Categorías' },
-              { v: 'Semanal',                     l: 'Frecuencia' },
+              { v: '4', l: 'Categorías' },
+              { v: 'Semanal', l: 'Frecuencia' },
             ].map(({ v, l }) => (
               <div key={l} className="flex flex-col items-center">
                 <span className="font-heading font-bold text-2xl text-text-main">{v}</span>
@@ -503,8 +534,8 @@ function Blog() {
                                flex items-center justify-center">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#64748B"
                     strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
                   </svg>
                 </div>
                 <p className="font-ui font-semibold text-text-muted">

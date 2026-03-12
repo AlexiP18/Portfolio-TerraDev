@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { client } from '../sanity/client';
+import { SITE_SETTINGS_QUERY } from '../sanity/queries';
 
 /* ─────────────────────────────────────────────────────────────
    COMPONENTE: INPUT con borde inferior
@@ -47,34 +49,34 @@ function FieldInput({ label, id, required, children }) {
 const IconEmail = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
     strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-    <polyline points="22,6 12,13 2,6"/>
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+    <polyline points="22,6 12,13 2,6" />
   </svg>
 );
 const IconLocation = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
     strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/>
-    <circle cx="12" cy="10" r="3"/>
+    <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
+    <circle cx="12" cy="10" r="3" />
   </svg>
 );
 const IconGithub = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
     strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
   </svg>
 );
 const IconLinkedin = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
     strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-    <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" />
   </svg>
 );
 const IconX = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
     strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
   </svg>
 );
 
@@ -86,6 +88,15 @@ function Contacto() {
   const [enviando, setEnviando] = useState(false);
   const [enviado, setEnviado] = useState(false);
 
+  // Estado para la configuración de Sanity
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    client.fetch(SITE_SETTINGS_QUERY)
+      .then(data => setSettings(data))
+      .catch(err => console.error("Error fetching contact info:", err));
+  }, []);
+
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
@@ -94,6 +105,9 @@ function Contacto() {
     setEnviando(true);
     setTimeout(() => { setEnviando(false); setEnviado(true); }, 1800);
   };
+
+  const email = settings?.contactEmail || 'hola@terrabyte.ec';
+  const location = settings?.location || 'Ambato, Ecuador';
 
   return (
     <div className="flex flex-col w-full min-h-screen">
@@ -141,7 +155,7 @@ function Contacto() {
             <div className="flex flex-col gap-6">
               <h2 className="font-heading font-bold text-text-main text-xl">Información de contacto</h2>
 
-              <a href="mailto:hola@terrabyte.ec" className="flex items-start gap-4 group">
+              <a href={`mailto:${email}`} className="flex items-start gap-4 group">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0
                                border border-primary/20 bg-primary/8 text-primary
                                group-hover:bg-primary/15 group-hover:border-primary/40 transition-all duration-200">
@@ -150,7 +164,7 @@ function Contacto() {
                 <div className="flex flex-col gap-0.5 pt-0.5">
                   <p className="font-ui font-medium text-xs text-text-muted uppercase tracking-wider">Email</p>
                   <p className="font-body text-text-main group-hover:text-primary transition-colors duration-200">
-                    hola@terrabyte.ec
+                    {email}
                   </p>
                 </div>
               </a>
@@ -162,7 +176,7 @@ function Contacto() {
                 </div>
                 <div className="flex flex-col gap-0.5 pt-0.5">
                   <p className="font-ui font-medium text-xs text-text-muted uppercase tracking-wider">Ubicación</p>
-                  <p className="font-body text-text-main">Ambato, Ecuador</p>
+                  <p className="font-body text-text-main">{location}</p>
                   <p className="font-body text-xs text-text-muted">UTC−5 · Trabajo remoto global</p>
                 </div>
               </div>
@@ -174,9 +188,9 @@ function Contacto() {
               <p className="font-ui font-medium text-xs text-text-muted uppercase tracking-wider">Redes sociales</p>
               <div className="flex items-center gap-3">
                 {[
-                  { icon: <IconGithub />,   href: 'https://github.com',   label: 'GitHub' },
+                  { icon: <IconGithub />, href: 'https://github.com', label: 'GitHub' },
                   { icon: <IconLinkedin />, href: 'https://linkedin.com', label: 'LinkedIn' },
-                  { icon: <IconX />,        href: 'https://x.com',        label: 'X / Twitter' },
+                  { icon: <IconX />, href: 'https://x.com', label: 'X / Twitter' },
                 ].map(({ icon, href, label }) => (
                   <a key={label} href={href} target="_blank" rel="noopener noreferrer" title={label}
                     className="w-10 h-10 rounded-xl border border-white/10 text-text-body
@@ -207,7 +221,7 @@ function Contacto() {
                 <div className="w-16 h-16 rounded-full flex items-center justify-center border border-primary/30 bg-primary/10">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF"
                     strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
+                    <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
                 <h3 className="font-heading font-bold text-text-main text-2xl">¡Mensaje recibido!</h3>
@@ -275,7 +289,7 @@ function Contacto() {
                     <>
                       <svg className="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                        <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                        <path d="M21 12a9 9 0 1 1-6.219-8.56" />
                       </svg>
                       Enviando…
                     </>
@@ -284,8 +298,8 @@ function Contacto() {
                       Enviar mensaje
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="22" y1="2" x2="11" y2="13"/>
-                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        <line x1="22" y1="2" x2="11" y2="13" />
+                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
                       </svg>
                     </>
                   )}

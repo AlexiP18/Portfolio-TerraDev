@@ -9,6 +9,7 @@ import {schemaTypes} from './schemaTypes'
  * Siempre se abre/edita el mismo documento — nunca se crea uno nuevo.
  */
 const SITE_SETTINGS_DOC_ID = 'siteSettings'
+const HOME_PAGE_DOC_ID = 'homePage'
 
 export default defineConfig({
   name: 'terrabyte-ec',
@@ -25,8 +26,6 @@ export default defineConfig({
           .items([
 
             // ── SINGLETON: Configuración Global ───────────────────────────
-            // Al hacer clic abre directamente el documento único.
-            // No hay lista, no hay botón "Create new".
             S.listItem()
               .title('Configuración Global')
               .icon(CogIcon)
@@ -37,9 +36,24 @@ export default defineConfig({
                   .documentId(SITE_SETTINGS_DOC_ID)
               ),
 
+            // ── SINGLETON: Página de Inicio ──────────────────────────────
+            S.listItem()
+              .title('Página de Inicio')
+              .icon(DocumentTextIcon)
+              .child(
+                S.document()
+                  .title('Contenido de Inicio')
+                  .schemaType('homePage')
+                  .documentId(HOME_PAGE_DOC_ID)
+              ),
+
             S.divider(),
 
-            // ── Blog ────────────────────────────────────────────────
+            // ── Equipo ──────────────────────────────────────────────────
+            S.documentTypeListItem('teamMember')
+              .title('Equipo / Nosotros'),
+
+            // ── Blog ──────────────────────────────────────────────────
             S.documentTypeListItem('post')
               .title('Artículos de Blog')
               .icon(DocumentTextIcon),

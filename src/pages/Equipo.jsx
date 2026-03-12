@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { client, urlFor } from '../sanity/client';
+import { TEAM_MEMBERS_QUERY } from '../sanity/queries';
 
 function Equipo() {
-  const team = [
+  const [team, setTeam] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fallback en caso de que Sanity falle o esté vacío
+  const fallbackTeam = [
     {
       name: 'Alex Guachi',
       title: 'Tech Lead · Backend',
@@ -58,6 +64,19 @@ function Equipo() {
     },
   ];
 
+  useEffect(() => {
+    client
+      .fetch(TEAM_MEMBERS_QUERY)
+      .then((data) => {
+        setTeam(data?.length ? data : fallbackTeam);
+      })
+      .catch((err) => {
+        console.error('Error fetching team:', err);
+        setTeam(fallbackTeam);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
   return (
     <div className="card">
       <div className="spark" />
@@ -67,25 +86,31 @@ function Equipo() {
         Operamos como un squad senior plug-and-play. Co-creamos con tu equipo interno, compartimos procesos y dejamos documentación viva.
       </p>
       <div className="team-grid">
-        {team.map((member) => (
-          <article className="talent-card" key={member.github}>
-            <img
-              src={member.photo}
-              alt={`Foto de ${member.name}`}
-              loading="lazy"
-              onError={(e) => { e.currentTarget.src = `https://placehold.co/200x200/151a1f/ffffff?text=${member.initials}`; }}
-            />
-            <div className="talent-card__copy">
-              <h3>{member.name}</h3>
-              <p>{member.title}</p>
-              <span className="talent-specialty">{member.specialty}</span>
-              <small>{member.focus}</small>
-            </div>
-            <a href={member.github} target="_blank" rel="noreferrer" className="ghost-link">
-              Ver perfil
-            </a>
-          </article>
-        ))}
+        {team.map((member) => {
+          const photoSrc = member.photo?.asset
+            ? urlFor(member.photo).width(400).height(400).url()
+            : member.photo;
+
+          return (
+            <article className="talent-card" key={member.github || member.name}>
+              <img
+                src={photoSrc}
+                alt={`Foto de ${member.name}`}
+                loading="lazy"
+                onError={(e) => { e.currentTarget.src = `https://placehold.co/200x200/151a1f/ffffff?text=${member.initials}`; }}
+              />
+              <div className="talent-card__copy">
+                <h3>{member.name}</h3>
+                <p>{member.title}</p>
+                <span className="talent-specialty">{member.specialty}</span>
+                <small>{member.focus}</small>
+              </div>
+              <a href={member.github} target="_blank" rel="noreferrer" className="ghost-link">
+                Ver perfil
+              </a>
+            </article>
+          );
+        })}
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ export const ALL_POSTS_QUERY = `
     mainImage,
     categories,
     publishedAt,
-    "excerpt": array::join(string::split((pt::text(body)), "")[0..200], "") + "..."
+    "excerpt": coalesce(excerpt, array::join(string::split((pt::text(body)), "")[0..200], "") + "...")
   }
 `;
 
@@ -25,7 +25,7 @@ export const POST_BY_SLUG_QUERY = `
     mainImage { ..., "alt": alt },
     categories,
     publishedAt,
-    "excerpt": array::join(string::split((pt::text(body)), "")[0..200], "") + "...",
+    "excerpt": coalesce(excerpt, array::join(string::split((pt::text(body)), "")[0..200], "") + "..."),
     body
   }
 `;
@@ -48,6 +48,44 @@ export const SITE_SETTINGS_QUERY = `
     heroHeadline,
     heroSubheadline,
     contactEmail,
-    socialLinks
+    secondaryEmail,
+    phoneNumber,
+    location,
+    logoLight,
+    logoDark,
+    favicon,
+    socialLinks,
+    seoDescription
+  }
+`;
+
+/** Datos de la página de inicio (Singleton) */
+export const HOMEPAGE_QUERY = `
+  *[_type == "homePage"][0] {
+    heroPill,
+    heroTitle,
+    heroDescription,
+    heroMeta,
+    studioStatusLabel,
+    availableSlots,
+    availableSlotsText,
+    processSteps,
+    metrics
+  }
+`;
+
+/** Miembros del equipo ordenados por "order" */
+export const TEAM_MEMBERS_QUERY = `
+  *[_type == "teamMember"] | order(order asc) {
+    _id,
+    name,
+    title,
+    specialty,
+    focus,
+    github,
+    linkedin,
+    initials,
+    color,
+    photo
   }
 `;

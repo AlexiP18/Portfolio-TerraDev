@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { client, urlFor } from '../sanity/client';
+import { SITE_SETTINGS_QUERY } from '../sanity/queries';
 import Button from './Button.jsx';
 
 import LogoTerrabyte from './LogoTerrabyte.jsx';
 
 const NAV_LINKS = [
-  { label: 'Inicio',       to: '/' },
-  { label: 'Servicios',    to: '/servicios' },
-  { label: 'Metodología',  to: '/metodologia' },
-  { label: 'Portafolio',   to: '/portafolio' },
-  { label: 'Blog',         to: '/blog' },
-  { label: 'Nosotros',     to: '/nosotros' },
+  { label: 'Inicio', to: '/' },
+  { label: 'Servicios', to: '/servicios' },
+  { label: 'Metodología', to: '/metodologia' },
+  { label: 'Portafolio', to: '/portafolio' },
+  { label: 'Blog', to: '/blog' },
+  { label: 'Nosotros', to: '/nosotros' },
 ];
 
 /* Clase activa para NavLink */
@@ -22,16 +24,18 @@ const linkInactive = 'text-text-body';
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled]  = useState(false);
-  const [hidden,   setHidden]    = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const prevScrollY = React.useRef(0);
 
-  /* Sombra + hide-on-scroll-down */
+  /* Sombra + hide-on-scroll-down + Fetch logo/settings */
+  const [settings, setSettings] = useState(null);
+
   useEffect(() => {
+    // Scroll logic
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 16);
-      // Ocultar solo cuando se baja más de 60 px desde el tope
       if (y > 60) {
         setHidden(y > prevScrollY.current);
       } else {
@@ -40,6 +44,12 @@ function Navbar() {
       prevScrollY.current = y;
     };
     window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Fetch global site settings
+    client.fetch(SITE_SETTINGS_QUERY)
+      .then(data => setSettings(data))
+      .catch(err => console.error("Error fetching site settings on Navbar:", err));
+
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
@@ -68,10 +78,18 @@ function Navbar() {
             to="/"
             className="flex items-center gap-2.5 text-text-main no-underline group"
           >
-            <LogoTerrabyte className="w-9 h-9 md:w-10 md:h-10 shrink-0" />
+            {settings?.logoDark?.asset ? (
+              <img
+                src={urlFor(settings.logoDark).height(80).url()}
+                alt={settings.title || 'Terrabyte EC'}
+                className="w-auto h-9 md:h-10 shrink-0"
+              />
+            ) : (
+              <LogoTerrabyte className="w-9 h-9 md:w-10 md:h-10 shrink-0" />
+            )}
             <div className="flex flex-col leading-none">
               <span className="font-heading font-bold text-[1.1rem] tracking-tight text-text-main group-hover:text-primary transition-colors duration-200">
-                Terrabyte EC
+                {settings?.title || 'Terrabyte EC'}
               </span>
               <span className="font-ui font-medium text-[0.65rem] text-text-muted uppercase tracking-[0.18em] mt-0.5">
                 Software Studio
@@ -117,9 +135,17 @@ function Navbar() {
         >
           {/* Logo mobile */}
           <Link to="/" className="flex items-center gap-2 no-underline" onClick={closeMenu}>
-            <LogoTerrabyte />
+            {settings?.logoDark?.asset ? (
+              <img
+                src={urlFor(settings.logoDark).height(60).url()}
+                alt={settings.title || 'Terrabyte EC'}
+                className="w-auto h-8 shrink-0"
+              />
+            ) : (
+              <LogoTerrabyte />
+            )}
             <span className="font-heading font-bold text-text-main text-[1.05rem]">
-              Terrabyte EC
+              {settings?.title || 'Terrabyte EC'}
             </span>
           </Link>
 
