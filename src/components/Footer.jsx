@@ -8,8 +8,8 @@ import LogoTerrabyte from './LogoTerrabyte.jsx';
 const QUICK_LINKS = [
   { label: 'Inicio', to: '/' },
   { label: 'Servicios', to: '/servicios' },
-  { label: 'Metodología', to: '/equipo' },
-  { label: 'Portafolio', to: '/proyectos' },
+  { label: 'Metodología', to: '/metodologia' },
+  { label: 'Portafolio', to: '/portafolio' },
   { label: 'Blog', to: '/blog' },
 ];
 

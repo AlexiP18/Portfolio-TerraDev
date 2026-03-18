@@ -454,7 +454,7 @@ function Servicios() {
             <Button as={Link} to="/contacto" variant="primary" size="lg">
               Cotizar Proyecto
             </Button>
-            <Button as={Link} to="/proyectos" variant="outline" size="lg">
+            <Button as={Link} to="/portafolio" variant="outline" size="lg">
               Ver Portafolio
             </Button>
           </div>

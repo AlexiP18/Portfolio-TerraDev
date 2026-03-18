@@ -19,6 +19,9 @@ import BlogIa from './pages/blog/BlogIa.jsx';
 import BlogCase from './pages/blog/BlogCase.jsx';
 import BlogCloud from './pages/blog/BlogCloud.jsx';
 import CaseStudyMedia from './pages/CaseStudyMedia.jsx';
+import Privacidad from './pages/Privacidad.jsx';
+import Terminos from './pages/Terminos.jsx';
+import Cookies from './pages/Cookies.jsx';
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
 
@@ -68,6 +71,9 @@ function App() {
           <Route path="/portafolio/media" element={<CaseStudyMedia />} />
           <Route path="/nosotros"    element={<Nosotros />} />
           <Route path="/contacto"    element={<Contacto />} />
+          <Route path="/privacidad"  element={<Privacidad />} />
+          <Route path="/terminos"    element={<Terminos />} />
+          <Route path="/cookies"     element={<Cookies />} />
           <Route path="/blog"        element={<Blog />} />
           <Route path="/blog/:slug"  element={
             <Suspense fallback={<div style={{ background: '#0B1120', minHeight: '100vh' }} />}>

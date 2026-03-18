@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button.jsx';
-import { SiGithub, SiLinkedin } from 'react-icons/si';
+import { SiGithub, SiLinkedin, SiWhatsapp } from 'react-icons/si';
 
 /* ─────────────────────────────────────────────────────────────
    SECCIÓN 1 — HERO
@@ -129,7 +129,7 @@ function Hero() {
               <Button as={Link} to="/contacto" variant="primary" size="lg">
                 Cotizar Ahora
               </Button>
-              <Button as={Link} to="/proyectos" variant="outline" size="lg">
+              <Button as={Link} to="/portafolio" variant="outline" size="lg">
                 Ver Portafolio
               </Button>
             </div>
@@ -497,7 +497,7 @@ function Metodologia() {
           <Button as={Link} to="/contacto" variant="primary" size="lg">
             Empecemos tu Proyecto
           </Button>
-          <Button as={Link} to="/equipo" variant="ghost" size="lg">
+          <Button as={Link} to="/nosotros" variant="ghost" size="lg">
             Conocer el Equipo →
           </Button>
         </div>
@@ -556,6 +556,7 @@ const VALORES = [
 ───────────────────────────────────────────────────────────── */
 
 function ContactoSection({ siteSettings }) {
+  const CONTACT_EMAIL = 'apoaquiza6287@uta.edu.ec';
   const [form, setForm] = React.useState({ nombre: '', email: '', proyecto: '', mensaje: '' });
   const [status, setStatus] = React.useState('idle'); // idle | sending | sent
 
@@ -566,8 +567,16 @@ function ContactoSection({ siteSettings }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setStatus('sending');
-    // Simulación de envío — reemplazar con fetch real
-    setTimeout(() => setStatus('sent'), 1800);
+    const subject = encodeURIComponent(`Nueva cotización - ${form.proyecto}`);
+    const body = encodeURIComponent(
+      `Hola, me gustaría cotizar un proyecto.\n\n` +
+      `Nombre: ${form.nombre}\n` +
+      `Email: ${form.email}\n` +
+      `Tipo de proyecto: ${form.proyecto}\n\n` +
+      `Mensaje:\n${form.mensaje}`
+    );
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    setTimeout(() => setStatus('sent'), 300);
   };
 
   /* Clase base para inputs con borde inferior */
@@ -577,7 +586,7 @@ function ContactoSection({ siteSettings }) {
     'focus:outline-none focus:border-primary transition-colors duration-300 ' +
     'hover:border-white/30';
 
-  const email = siteSettings?.contactEmail || 'hola@terrabyte.ec';
+  const email = CONTACT_EMAIL;
   const location = siteSettings?.location || 'Ambato, Tungurahua · Ecuador 🇪🇨';
 
   return (
@@ -905,7 +914,7 @@ function HeroSection({ settings, homeData }) {
               <Button as={Link} to="/contacto" variant="primary" size="lg">
                 Cotizar Ahora
               </Button>
-              <Button as={Link} to="/proyectos" variant="outline" size="lg">
+              <Button as={Link} to="/portafolio" variant="outline" size="lg">
                 Ver Portafolio
               </Button>
             </div>
@@ -1075,6 +1084,9 @@ function Nosotros({ teamData }) {
                           </a>
                           <a href={member.linkedin || '#'} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#0A66C2] transition-colors" title="LinkedIn">
                             <SiLinkedin className="w-4 h-4" />
+                          </a>
+                          <a href={member.whatsapp || '#'} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-[#25D366] transition-colors" title="WhatsApp">
+                            <SiWhatsapp className="w-4 h-4" />
                           </a>
                         </div>
                       </div>
