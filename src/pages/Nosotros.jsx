@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../components/Button.jsx';
-import { SiGithub, SiLinkedin } from 'react-icons/si';
+import { SiGithub, SiLinkedin, SiWhatsapp } from 'react-icons/si';
 
 /* ─────────────────────────────────────────────────────────────
    DATOS
@@ -13,9 +13,10 @@ const EQUIPO = [
     iniciales: 'AG',
     accent: '#2DD4BF',
     bg: 'linear-gradient(135deg, #0d2d29, #1a4a44)',
-    photo: '/team/alex_guachi.jpg',
+    photo: '/team/alex_guachi.webp',
     github: '#',
     linkedin: '#',
+    whatsapp: '#',
   },
   {
     nombre: 'Heidi Villavicencio',
@@ -23,9 +24,10 @@ const EQUIPO = [
     iniciales: 'HV',
     accent: '#818cf8',
     bg: 'linear-gradient(135deg, #0f0f2e, #1a1a4a)',
-    photo: '/team/heidi_villavicencio.jpg',
+    photo: '/team/heidi_villavicencio.webp',
     github: '#',
     linkedin: '#',
+    whatsapp: '#',
   },
   {
     nombre: 'Michelle Tunja',
@@ -36,6 +38,7 @@ const EQUIPO = [
     photo: '/team/michelle_tunja.jpg',
     github: '#',
     linkedin: '#',
+    whatsapp: '#',
   },
   {
     nombre: 'Daniel Calapiña',
@@ -43,9 +46,10 @@ const EQUIPO = [
     iniciales: 'DC',
     accent: '#fb923c',
     bg: 'linear-gradient(135deg, #1a110a, #2d1f0e)',
-    photo: '/team/daniel_calapiña.jpg',
+    photo: '/team/daniel_calapiña.webp',
     github: '#',
     linkedin: '#',
+    whatsapp: '#',
   },
   {
     nombre: 'Dennis Chimborazo',
@@ -56,6 +60,7 @@ const EQUIPO = [
     photo: '/team/dennis_chimborazo.jpg',
     github: '#',
     linkedin: '#',
+    whatsapp: '#',
   },
   {
     nombre: 'Alexis Poaquiza',
@@ -66,6 +71,7 @@ const EQUIPO = [
     photo: '/team/alexis_poaquiza.jpg',
     github: '#',
     linkedin: '#',
+    whatsapp: '#',
   },
 ];
 
@@ -251,15 +257,15 @@ function Nosotros() {
 
           {/* Grid de avatares */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-            {EQUIPO.map(({ nombre, cargo, iniciales, accent, bg, photo, github, linkedin }) => (
+            {EQUIPO.map(({ nombre, cargo, iniciales, accent, bg, photo, github, linkedin, whatsapp }) => (
               <div
                 key={nombre}
                 className="flex flex-col items-center gap-3 group cursor-default h-full"
               >
-                {/* Avatar circular */}
+                {/* Avatar circular grande */}
                 <div
-                  className="relative w-20 h-20 rounded-full overflow-hidden
-                             transition-all duration-300 group-hover:scale-105"
+                  className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden bg-bg-secondary/70
+                             transition-all duration-300"
                   style={{
                     border: `2px solid ${accent}35`,
                     boxShadow: `0 0 0 0 ${accent}00`,
@@ -310,6 +316,9 @@ function Nosotros() {
                   </a>
                   <a href={linkedin || '#'} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-[#0A66C2] transition-colors" title="LinkedIn">
                     <SiLinkedin className="w-5 h-5 opacity-80 hover:opacity-100" />
+                  </a>
+                  <a href={whatsapp || '#'} target="_blank" rel="noreferrer" className="text-gray-500 hover:text-[#25D366] transition-colors" title="WhatsApp">
+                    <SiWhatsapp className="w-5 h-5 opacity-80 hover:opacity-100" />
                   </a>
                 </div>
               </div>

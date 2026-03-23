@@ -57,7 +57,7 @@ export default function CaseStudyMedia() {
           </div>
 
           <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight text-white tracking-tight">
-            VitalIA: Sistema Inteligente de <br className="hidden sm:block" />
+            MED/IA: Sistema Inteligente de <br className="hidden sm:block" />
             <span style={{
               backgroundImage: 'linear-gradient(135deg, #2DD4BF, #67e8f9)',
               WebkitBackgroundClip: 'text',

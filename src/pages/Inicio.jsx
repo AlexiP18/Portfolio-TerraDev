@@ -512,10 +512,10 @@ function Metodologia() {
 ───────────────────────────────────────────────────────────── */
 
 const EQUIPO = [
-  { nombre: 'Alex Guachi', rol: 'Tech Lead · Backend', initials: 'AG', color: '#2DD4BF', photo: '/team/alex_guachi.jpg', github: '#', linkedin: '#' },
-  { nombre: 'Heidi Villavicencio', rol: 'Product Engineer', initials: 'HV', color: '#818cf8', photo: '/team/heidi_villavicencio.jpg', github: '#', linkedin: '#' },
+  { nombre: 'Alex Guachi', rol: 'Tech Lead · Backend', initials: 'AG', color: '#2DD4BF', photo: '/team/alex_guachi.webp', github: '#', linkedin: '#' },
+  { nombre: 'Heidi Villavicencio', rol: 'Product Engineer', initials: 'HV', color: '#818cf8', photo: '/team/heidi_villavicencio.webp', github: '#', linkedin: '#' },
   { nombre: 'Michelle Tunja', rol: 'Lead UX / Frontend', initials: 'MT', color: '#f472b6', photo: '/team/michelle_tunja.jpg', github: '#', linkedin: '#' },
-  { nombre: 'Daniel Calapiña', rol: 'Platform Engineer', initials: 'DC', color: '#fb923c', photo: '/team/daniel_calapiña.jpg', github: '#', linkedin: '#' },
+  { nombre: 'Daniel Calapiña', rol: 'Platform Engineer', initials: 'DC', color: '#fb923c', photo: '/team/daniel_calapiña.webp', github: '#', linkedin: '#' },
   { nombre: 'Dennis Chimborazo', rol: 'Backend Specialist', initials: 'DX', color: '#34d399', photo: '/team/dennis_chimborazo.jpg', github: '#', linkedin: '#' },
   { nombre: 'Alexis Poaquiza', rol: 'DevOps & Reliability', initials: 'AP', color: '#a78bfa', photo: '/team/alexis_poaquiza.jpg', github: '#', linkedin: '#' },
 ];
@@ -1066,7 +1066,7 @@ function Nosotros({ teamData }) {
                     const color = member.color || '#2DD4BF';
                     // Revisar si existe `photo.asset` (Sanity) o es string plano (Placeholder)
                     const photoSrc = member.photo?.asset
-                      ? urlFor(member.photo).width(200).height(200).url()
+                      ? urlFor(member.photo).width(320).height(420).fit('crop').url()
                       : member.photo;
 
                     return (
@@ -1074,9 +1074,9 @@ function Nosotros({ teamData }) {
                         key={nombre}
                         className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-white/[0.03] border border-white/[0.07] hover:border-primary/25 hover:bg-primary/[0.04] transition-all duration-300 group cursor-default h-full"
                       >
-                        {/* Avatar circular */}
+                        {/* Avatar circular grande */}
                         <div
-                          className="w-14 h-14 rounded-full shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg overflow-hidden"
+                          className="w-24 h-24 sm:w-28 sm:h-28 rounded-full shrink-0 transition-transform duration-300 shadow-lg overflow-hidden bg-bg-secondary/70 border border-white/10"
                           style={{ boxShadow: `0 0 20px ${color}30` }}
                         >
                           {photoSrc ? (
@@ -1091,7 +1091,7 @@ function Nosotros({ teamData }) {
                                 }}
                               />
                               <div
-                                className="w-full h-full hidden items-center justify-center font-heading font-bold text-base text-bg-main"
+                                className="w-full h-full hidden items-center justify-center font-heading font-bold text-lg text-bg-main"
                                 style={{ background: color.includes('gradient') ? color : `linear-gradient(135deg, ${color}, ${color}99)` }}
                               >
                                 {initials}

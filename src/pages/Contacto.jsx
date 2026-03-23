@@ -87,6 +87,7 @@ function Contacto() {
   const [form, setForm] = useState({ nombre: '', email: '', tipo: '', mensaje: '' });
   const [enviando, setEnviando] = useState(false);
   const [enviado, setEnviado] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   // Estado para la configuración de Sanity
   const [settings, setSettings] = useState(null);
@@ -100,13 +101,49 @@ function Contacto() {
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.id]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setEnviando(true);
-    setTimeout(() => { setEnviando(false); setEnviado(true); }, 1800);
+    setErrorMessage('');
+
+    try {
+      const formToken = import.meta.env.VITE_FORMSUBMIT_TOKEN || '2376fd1b25e99f8ab1a6d77196fc9030';
+      const endpoint = `https://formsubmit.co/ajax/${encodeURIComponent(formToken)}`;
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `Nuevo contacto - ${form.tipo}`,
+          _template: 'table',
+          _captcha: 'false',
+          _replyto: form.email,
+          nombre: form.nombre,
+          email: form.email,
+          tipo: form.tipo,
+          mensaje: form.mensaje,
+        }),
+      });
+
+      const result = await response.json().catch(() => null);
+      if (!response.ok || result?.success === false) {
+        throw new Error(result?.message || 'No se pudo enviar el formulario.');
+      }
+
+      setEnviado(true);
+      setForm({ nombre: '', email: '', tipo: '', mensaje: '' });
+    } catch (error) {
+      console.error('Error sending contact form:', error);
+      setErrorMessage('No pudimos enviar tu mensaje en este momento. Intenta de nuevo en unos minutos.');
+    } finally {
+      setEnviando(false);
+    }
   };
 
-  const email = settings?.contactEmail || 'hola@terrabyte.ec';
+  const email = settings?.contactEmail || 'apoaquiza6287@uta.edu.ec';
   const location = settings?.location || 'Ambato, Ecuador';
 
   return (
@@ -227,7 +264,7 @@ function Contacto() {
                 <h3 className="font-heading font-bold text-text-main text-2xl">¡Mensaje recibido!</h3>
                 <p className="font-body text-text-body text-sm max-w-sm leading-relaxed">
                   Te respondemos en menos de 24 horas. Si es urgente, escríbenos a{' '}
-                  <a href="mailto:hola@terrabyte.ec" className="text-primary hover:underline">hola@terrabyte.ec</a>
+                  <a href={`mailto:${email}`} className="text-primary hover:underline">{email}</a>
                 </p>
                 <button
                   onClick={() => { setEnviado(false); setForm({ nombre: '', email: '', tipo: '', mensaje: '' }); }}
@@ -304,6 +341,11 @@ function Contacto() {
                     </>
                   )}
                 </button>
+                {errorMessage && (
+                  <p className="font-body text-sm text-red-300 text-center border border-red-500/20 bg-red-500/5 rounded-xl py-2.5 px-3">
+                    {errorMessage}
+                  </p>
+                )}
               </form>
             )}
           </div>
