@@ -556,27 +556,53 @@ const VALORES = [
 ───────────────────────────────────────────────────────────── */
 
 function ContactoSection({ siteSettings }) {
-  const CONTACT_EMAIL = 'apoaquiza6287@uta.edu.ec';
+  const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_FORM_RECIPIENT || 'apoaquiza6287@uta.edu.ec';
+  const FORM_TOKEN = import.meta.env.VITE_FORMSUBMIT_TOKEN || '2376fd1b25e99f8ab1a6d77196fc9030';
+  const FORM_ENDPOINT = `https://formsubmit.co/ajax/${encodeURIComponent(FORM_TOKEN)}`;
   const [form, setForm] = React.useState({ nombre: '', email: '', proyecto: '', mensaje: '' });
-  const [status, setStatus] = React.useState('idle'); // idle | sending | sent
+  const [status, setStatus] = React.useState('idle'); // idle | sending | sent | error
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('sending');
-    const subject = encodeURIComponent(`Nueva cotización - ${form.proyecto}`);
-    const body = encodeURIComponent(
-      `Hola, me gustaría cotizar un proyecto.\n\n` +
-      `Nombre: ${form.nombre}\n` +
-      `Email: ${form.email}\n` +
-      `Tipo de proyecto: ${form.proyecto}\n\n` +
-      `Mensaje:\n${form.mensaje}`
-    );
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
-    setTimeout(() => setStatus('sent'), 300);
+    setErrorMessage('');
+
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `Nueva cotizacion - ${form.proyecto}`,
+          _template: 'table',
+          _captcha: 'false',
+          nombre: form.nombre,
+          email: form.email,
+          proyecto: form.proyecto,
+          mensaje: form.mensaje,
+        }),
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok || result?.success === false) {
+        throw new Error(result?.message || 'No se pudo enviar el correo.');
+      }
+
+      setStatus('sent');
+      setForm({ nombre: '', email: '', proyecto: '', mensaje: '' });
+    } catch (error) {
+      console.error('Error sending contact form:', error);
+      setStatus('error');
+      setErrorMessage('No pudimos enviar tu mensaje ahora mismo. Intenta de nuevo en unos minutos o escríbenos por correo directo.');
+    }
   };
 
   /* Clase base para inputs con borde inferior */
@@ -718,7 +744,8 @@ function ContactoSection({ siteSettings }) {
                 </div>
                 <button
                   onClick={() => { setStatus('idle'); setForm({ nombre: '', email: '', proyecto: '', mensaje: '' }); }}
-                  className="font-ui font-semibold text-sm text-primary border border-primary/30 px-5 py-2.5 rounded-full hover:bg-primary/10 transition-all duration-300"
+                  className="font-ui font-semibold text-sm border border-primary/30 px-5 py-2.5 rounded-full hover:bg-primary/10 transition-all duration-300"
+                  style={{ background: 'transparent', color: '#2DD4BF', boxShadow: 'none' }}
                 >
                   Enviar otro mensaje
                 </button>
@@ -844,6 +871,12 @@ function ContactoSection({ siteSettings }) {
                   Al enviar aceptas nuestra{' '}
                   <a href="/privacidad" className="text-primary hover:underline">Política de Privacidad</a>.
                 </p>
+
+                {status === 'error' && (
+                  <p className="font-body text-sm text-center text-red-300 border border-red-500/20 bg-red-500/5 rounded-2xl px-4 py-3">
+                    {errorMessage}
+                  </p>
+                )}
               </form>
             )}
           </div>
@@ -1146,4 +1179,3 @@ function Inicio() {
 }
 
 export default Inicio;
-

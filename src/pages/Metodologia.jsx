@@ -435,7 +435,7 @@ function Metodologia() {
       </section>
 
       {/* ── Herramientas del proceso ─────────────────────── */}
-      <section className="w-full max-w-5xl mx-auto px-6 py-16 lg:py-20">
+      <section className="w-full max-w-6xl xl:max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
         <div className="flex flex-col items-center text-center gap-3 mb-10">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/8">
             <span className="font-ui font-medium text-xs text-primary uppercase tracking-widest">
@@ -450,21 +450,21 @@ function Metodologia() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-5 lg:gap-6">
           {TOOLS.map(({ cat, Icon, items }) => (
             <div
               key={cat}
-              className="flex flex-col gap-3 p-4 rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:border-primary/20 hover:bg-primary/[0.03] transition-all duration-300"
+              className="flex flex-col gap-4 p-5 lg:p-6 min-h-[170px] lg:min-h-[190px] rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:border-primary/20 hover:bg-primary/[0.03] transition-all duration-300"
             >
-              <div className="flex flex-row items-center gap-1.5 border-b border-white/[0.06] pb-2.5 mb-0.5">
-                <span className="flex items-center shrink-0 text-primary"><Icon size={13} /></span>
-                <span className="font-ui font-semibold text-[0.65rem] text-primary uppercase tracking-wider leading-[1]">{cat}</span>
+              <div className="flex flex-row items-center gap-2 border-b border-white/[0.06] pb-3 mb-1">
+                <span className="flex items-center shrink-0 text-primary"><Icon size={17} /></span>
+                <span className="font-ui font-semibold text-[0.78rem] lg:text-[0.82rem] text-primary uppercase tracking-wider leading-[1]">{cat}</span>
               </div>
-              <ul className="flex flex-col gap-2">
+              <ul className="flex flex-col gap-2.5 lg:gap-3">
                 {items.map(({ name, SIcon, color }) => (
-                  <li key={name} className="flex items-center gap-2">
-                    <SIcon size={11} color={color} className="shrink-0 opacity-80" />
-                    <span className="font-code text-[0.68rem] text-text-muted leading-none">{name}</span>
+                  <li key={name} className="flex items-center gap-2.5">
+                    <SIcon size={14} color={color} className="shrink-0 opacity-80" />
+                    <span className="font-code text-xs lg:text-sm text-text-muted leading-tight">{name}</span>
                   </li>
                 ))}
               </ul>

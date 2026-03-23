@@ -17,7 +17,7 @@ const NAV_LINKS = [
 
 /* Clase activa para NavLink */
 const linkBase =
-  'font-ui font-medium text-[0.95rem] px-3.5 py-2 rounded-xl transition-all duration-200 ' +
+  'font-ui font-medium text-[0.95rem] lg:text-base xl:text-[1.05rem] 2xl:text-[1.1rem] px-3.5 lg:px-4 xl:px-[1.1rem] py-2 lg:py-2.5 rounded-xl transition-all duration-200 ' +
   'hover:text-text-main hover:bg-white/5';
 const linkActive = 'text-primary';
 const linkInactive = 'text-text-body';
@@ -62,11 +62,11 @@ function Navbar() {
       style={{ transform: hidden ? 'translateY(-110%)' : 'translateY(0)' }}
     >
       {/* ── Desktop nav pill ──────────────────────────────── */}
-      <div className="hidden md:flex justify-center pt-4 px-4">
+      <div className="hidden md:flex justify-center pt-4 px-4 lg:px-6 2xl:px-8">
         <nav
           className={[
-            'w-full max-w-5xl flex items-center justify-between',
-            'px-5 py-2.5 rounded-2xl',
+            'w-full max-w-6xl xl:max-w-7xl 2xl:max-w-[96rem] flex items-center justify-between',
+            'px-5 lg:px-6 xl:px-7 2xl:px-8 py-2.5 lg:py-3 xl:py-3.5 rounded-2xl',
             'bg-bg-secondary/70 backdrop-blur-xl',
             'border border-white/10',
             'transition-shadow duration-300',
@@ -76,22 +76,22 @@ function Navbar() {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2.5 text-text-main no-underline group"
+            className="flex items-center gap-2.5 lg:gap-3 text-text-main no-underline group"
           >
             {settings?.logoDark?.asset ? (
               <img
                 src={urlFor(settings.logoDark).height(80).url()}
                 alt={settings.title || 'Terrabyte EC'}
-                className="w-auto h-9 md:h-10 shrink-0"
+                className="w-auto h-9 md:h-10 lg:h-11 xl:h-12 shrink-0"
               />
             ) : (
-              <LogoTerrabyte className="w-9 h-9 md:w-10 md:h-10 shrink-0" />
+              <LogoTerrabyte className="w-9 h-9 md:w-10 md:h-10 lg:w-11 lg:h-11 xl:w-12 xl:h-12 shrink-0" />
             )}
             <div className="flex flex-col leading-none">
-              <span className="font-heading font-bold text-[1.1rem] tracking-tight text-text-main group-hover:text-primary transition-colors duration-200">
+              <span className="font-heading font-bold text-[1.1rem] lg:text-[1.2rem] xl:text-[1.3rem] 2xl:text-[1.4rem] tracking-tight text-text-main group-hover:text-primary transition-colors duration-200">
                 {settings?.title || 'Terrabyte EC'}
               </span>
-              <span className="font-ui font-medium text-[0.65rem] text-text-muted uppercase tracking-[0.18em] mt-0.5">
+              <span className="font-ui font-medium text-[0.65rem] lg:text-[0.72rem] xl:text-[0.78rem] text-text-muted uppercase tracking-[0.18em] mt-0.5">
                 Software Studio
               </span>
             </div>
@@ -115,7 +115,12 @@ function Navbar() {
           </ul>
 
           {/* CTA */}
-          <Button as={Link} to="/contacto" size="sm">
+          <Button
+            as={Link}
+            to="/contacto"
+            size="sm"
+            className="lg:text-[0.95rem] xl:text-base lg:px-5 lg:py-2 xl:px-6 xl:py-2.5"
+          >
             Iniciar Proyecto
           </Button>
         </nav>
