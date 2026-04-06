@@ -10,75 +10,69 @@ import { ALL_POSTS_QUERY } from '../sanity/queries';
 const PLACEHOLDER_POSTS = [
   {
     _id: '1',
-    title: 'De monolito a microservicios: lecciones desde la trinchera',
-    slug: { current: 'monolito-a-microservicios' },
-    categories: ['Arquitectura', 'Backend'],
-    publishedAt: '2026-02-18T10:00:00Z',
-    excerpt:
-      'Migramos un sistema financiero legado de 8 años sin detener operaciones. Aquí está el mapa de lo que falló, lo que funcionó y lo que haríamos diferente hoy.',
-    accent: '#2DD4BF',
-    gradientFrom: '#0d2d29',
-    gradientTo: '#1a4a44',
+    title: 'Structurizr: Arquitectura como código',
+    slug: { current: 'structurizr' },
+    categories: ['Arquitectura', 'DaC'],
+    publishedAt: '2026-04-06T10:00:00Z',
+    excerpt: 'El estándar para crear Diagrams as Code aplicando el Modelo C4 de forma colaborativa, ideal para documentar la arquitectura de sistemas complejos desde herramientas CI/CD.',
+    accent: '#10b981',
+    gradientFrom: '#064e3b',
+    gradientTo: '#065f46',
   },
   {
     _id: '2',
-    title: 'React Server Components en producción: lo que nadie te dice',
-    slug: { current: 'react-server-components-produccion' },
-    categories: ['Frontend'],
-    publishedAt: '2026-02-05T10:00:00Z',
-    excerpt:
-      'Seis meses usando RSC en un e-commerce real. Métricas, trampas y el patrón que terminó salvando el proyecto.',
-    accent: '#818cf8',
-    gradientFrom: '#0f0f2e',
-    gradientTo: '#1a1a4a',
+    title: 'Lucidchart: Gestión visual para el SDLC',
+    slug: { current: 'lucidchart' },
+    categories: ['Visualización', 'Cloud'],
+    publishedAt: '2026-04-05T10:00:00Z',
+    excerpt: 'La solución ágil basada en la web para el diseño interactivo de sistemas. Colaboración sincrónica, UML avanzado y diseño ERD potente y accesible.',
+    accent: '#f97316',
+    gradientFrom: '#431407',
+    gradientTo: '#7c2d12',
   },
   {
     _id: '3',
-    title: 'GitOps: el estado de tu infraestructura vive en Git',
-    slug: { current: 'gitops-infraestructura-git' },
-    categories: ['DevOps', 'Cloud'],
-    publishedAt: '2026-01-22T10:00:00Z',
-    excerpt:
-      'Cómo implementamos GitOps con ArgoCD para gestionar 12 entornos sin scripts de bash interminables ni reuniones de "¿quién deployó qué?".',
-    accent: '#34d399',
-    gradientFrom: '#0a1e15',
-    gradientTo: '#0f2d1e',
+    title: 'Figma: Diseño colaborativo de alta fidelidad',
+    slug: { current: 'figma' },
+    categories: ['UI/UX', 'Diseño'],
+    publishedAt: '2026-04-04T10:00:00Z',
+    excerpt: 'Liderando el estándar de la industria en diseño de interfaces y prototipado interactivo en tiempo real con una rica biblioteca de componentes.',
+    accent: '#ec4899',
+    gradientFrom: '#4a044e',
+    gradientTo: '#701a75',
   },
   {
     _id: '4',
-    title: 'LLMs como co-pilotos de código: guía práctica para equipos',
-    slug: { current: 'llms-copilots-equipos' },
-    categories: ['Ingeniería', 'Frontend'],
-    publishedAt: '2026-01-10T10:00:00Z',
-    excerpt:
-      'No es magia, es prompt engineering + contexto correcto. Nuestro playbook para integrar modelos de lenguaje en el flujo de desarrollo sin perder el control.',
-    accent: '#fb923c',
-    gradientFrom: '#1a110a',
-    gradientTo: '#2d1f0e',
+    title: 'Microsoft Visio: Diagramación profesional',
+    slug: { current: 'microsoft-visio' },
+    categories: ['Diagramación', 'Procesos'],
+    publishedAt: '2026-04-03T10:00:00Z',
+    excerpt: 'Aprovechando su integración con Microsoft 365, permite documentar procesos corporativos, redes robustas e infraestructura industrial de manera conectada y conectada a datos.',
+    accent: '#0aa5e9',
+    gradientFrom: '#0c4a6e',
+    gradientTo: '#0369a1',
   },
   {
     _id: '5',
-    title: 'PostgreSQL vs MongoDB en 2026: ¿sigue siendo válida la discusión?',
-    slug: { current: 'postgres-vs-mongodb-2026' },
-    categories: ['Backend', 'Data'],
-    publishedAt: '2025-12-28T10:00:00Z',
-    excerpt:
-      'Analizamos tres proyectos reales donde elegimos cada uno y por qué. Spoiler: la respuesta siempre es "depende", pero te damos el árbol de decisión.',
-    accent: '#f472b6',
-    gradientFrom: '#1a0f1f',
-    gradientTo: '#2d1042',
+    title: 'Visual Paradigm: Modelado UML y Diseño',
+    slug: { current: 'visual-paradigm' },
+    categories: ['UML', 'Modelado'],
+    publishedAt: '2026-04-02T10:00:00Z',
+    excerpt: 'Una suite de modelado visual versátil con herramientas para BPMN, UML, mapas mentales y planificación de proyectos para guiar la transformación de TI.',
+    accent: '#6366f1',
+    gradientFrom: '#1e1b4b',
+    gradientTo: '#312e81',
   },
   {
     _id: '6',
-    title: 'Testing E2E con Playwright: del miedo a la confianza',
-    slug: { current: 'testing-e2e-playwright' },
-    categories: ['DevOps', 'Backend'],
-    publishedAt: '2025-12-10T10:00:00Z',
-    excerpt:
-      'Cómo pasamos de 0% de cobertura E2E a deploying en viernes sin ansiedad existencial. El setup, los anti-patrones y los 3 tests que salvan el 80% de los bugs.',
-    accent: '#67e8f9',
-    gradientFrom: '#091418',
-    gradientTo: '#0f2026',
+    title: 'Balsamiq: Wireframes rápidos',
+    slug: { current: 'balsamiq' },
+    categories: ['Prototipado', 'UX/UI'],
+    publishedAt: '2026-04-01T10:00:00Z',
+    excerpt: 'La rapidez y creatividad de dibujar en un pizarrón llevadas a una herramienta digital intuitiva de baja fidelidad para el diseño temprano.',
+    accent: '#a855f7',
+    gradientFrom: '#2a1738',
+    gradientTo: '#3c1e4f',
   },
 ];
 
@@ -395,8 +389,9 @@ function Blog() {
     client
       .fetch(ALL_POSTS_QUERY)
       .then((data) => {
-        // console.log("Posts recibidos de Sanity:", data); // Descomenta esto para hacer debug
-        setPosts(data?.length ? data : PLACEHOLDER_POSTS);
+        // Combinamos los posts activos de Sanity con las 6 entradas estáticas nuevas
+        const sanityPosts = data?.length ? data : [];
+        setPosts([...sanityPosts, ...PLACEHOLDER_POSTS]);
       })
       .catch((err) => {
         console.error("Error obteniendo datos de Sanity:", err);

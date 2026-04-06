@@ -18,6 +18,12 @@ import Blog from './pages/Blog.jsx';
 import BlogIa from './pages/blog/BlogIa.jsx';
 import BlogCase from './pages/blog/BlogCase.jsx';
 import BlogCloud from './pages/blog/BlogCloud.jsx';
+import BlogBalsamiq from './pages/blog/BlogBalsamiq.jsx';
+import BlogVisualParadigm from './pages/blog/BlogVisualParadigm.jsx';
+import BlogFigma from './pages/blog/BlogFigma.jsx';
+import BlogMicrosoftVisio from './pages/blog/BlogMicrosoftVisio.jsx';
+import BlogStructurizr from './pages/blog/BlogStructurizr.jsx';
+import BlogLucidchart from './pages/blog/BlogLucidchart.jsx';
 import CaseStudyMedia from './pages/CaseStudyMedia.jsx';
 import Privacidad from './pages/Privacidad.jsx';
 import Terminos from './pages/Terminos.jsx';
@@ -75,6 +81,12 @@ function App() {
           <Route path="/terminos"    element={<Terminos />} />
           <Route path="/cookies"     element={<Cookies />} />
           <Route path="/blog"        element={<Blog />} />
+          <Route path="/blog/balsamiq" element={<BlogBalsamiq />} />
+          <Route path="/blog/visual-paradigm" element={<BlogVisualParadigm />} />
+          <Route path="/blog/figma" element={<BlogFigma />} />
+          <Route path="/blog/microsoft-visio" element={<BlogMicrosoftVisio />} />
+          <Route path="/blog/structurizr" element={<BlogStructurizr />} />
+          <Route path="/blog/lucidchart" element={<BlogLucidchart />} />
           <Route path="/blog/:slug"  element={
             <Suspense fallback={<div style={{ background: '#0B1120', minHeight: '100vh' }} />}>
               <BlogPost />
@@ -91,6 +103,7 @@ function App() {
                   <Route path="/blog/ia"    element={<BlogIa />} />
                   <Route path="/blog/case"  element={<BlogCase />} />
                   <Route path="/blog/cloud" element={<BlogCloud />} />
+                  <Route path="/blog/balsamiq" element={<BlogBalsamiq />} />
                 </Routes>
               </div>
             </div>
