@@ -9,6 +9,28 @@ import { ALL_POSTS_QUERY } from '../sanity/queries';
 ───────────────────────────────────────────────────────────── */
 const PLACEHOLDER_POSTS = [
   {
+    _id: '8',
+    title: 'Qodo: AI code review para equipos que cuidan la calidad',
+    slug: { current: 'qodo' },
+    categories: ['AI Code Review', 'DevTools'],
+    publishedAt: '2026-04-21T11:00:00Z',
+    excerpt: 'Una investigacion practica sobre Qodo: revision agentica en PRs, plugin de IDE, Context Engine, reglas de equipo, generacion de tests y flujos para validar codigo generado por IA.',
+    accent: '#4F8CFF',
+    gradientFrom: '#10213f',
+    gradientTo: '#0d2f24',
+  },
+  {
+    _id: '7',
+    title: 'Odoo: ERP modular para operaciones integradas',
+    slug: { current: 'odoo' },
+    categories: ['ERP', 'Automatizacion'],
+    publishedAt: '2026-04-21T10:00:00Z',
+    excerpt: 'Una investigacion practica sobre Odoo: modulos clave, flujos de negocio, implementacion, automatizaciones, hosting, API JSON-2 y criterios para adoptarlo sin perder el control operativo.',
+    accent: '#875A7B',
+    gradientFrom: '#241326',
+    gradientTo: '#0f3b3a',
+  },
+  {
     _id: '1',
     title: 'Structurizr: Arquitectura como código',
     slug: { current: 'structurizr' },
@@ -85,6 +107,10 @@ const ACCENT_MAP = {
   Data: '#67e8f9',
   Arquitectura: '#a78bfa',
   Ingeniería: '#fbbf24',
+  ERP: '#875A7B',
+  Automatizacion: '#00A09D',
+  'AI Code Review': '#4F8CFF',
+  DevTools: '#22C55E',
 };
 
 function categoryAccent(cat) {

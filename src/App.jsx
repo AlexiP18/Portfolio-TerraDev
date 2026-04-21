@@ -24,6 +24,8 @@ import BlogFigma from './pages/blog/BlogFigma.jsx';
 import BlogMicrosoftVisio from './pages/blog/BlogMicrosoftVisio.jsx';
 import BlogStructurizr from './pages/blog/BlogStructurizr.jsx';
 import BlogLucidchart from './pages/blog/BlogLucidchart.jsx';
+import BlogOdoo from './pages/blog/BlogOdoo.jsx';
+import BlogQodo from './pages/blog/BlogQodo.jsx';
 import CaseStudyMedia from './pages/CaseStudyMedia.jsx';
 import Privacidad from './pages/Privacidad.jsx';
 import Terminos from './pages/Terminos.jsx';
@@ -87,6 +89,8 @@ function App() {
           <Route path="/blog/microsoft-visio" element={<BlogMicrosoftVisio />} />
           <Route path="/blog/structurizr" element={<BlogStructurizr />} />
           <Route path="/blog/lucidchart" element={<BlogLucidchart />} />
+          <Route path="/blog/odoo" element={<BlogOdoo />} />
+          <Route path="/blog/qodo" element={<BlogQodo />} />
           <Route path="/blog/:slug"  element={
             <Suspense fallback={<div style={{ background: '#0B1120', minHeight: '100vh' }} />}>
               <BlogPost />
